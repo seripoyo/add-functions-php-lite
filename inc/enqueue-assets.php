@@ -114,7 +114,7 @@ if ( ! class_exists( 'AFP_Plugin_Enqueue' ) ) {
 		 **/
 		public function add_custom_link_after_legend( $content ) {
 			$target      = '<legend>Register For a New Account</legend>';
-			$link        = '<a href="https://seripoyo.work/add-functions/wp-login.php?loginSocial=google" data-plugin="nsl" data-action="connect" data-redirect="current" data-provider="google" data-popupwidth="600" data-popupheight="600">ログインまたは登録はこちら</a>';
+			$link        = '<a href="https://add-functions-php.seripoyo.work/wp-login.php?loginSocial=google" data-plugin="nsl" data-action="connect" data-redirect="current" data-provider="google" data-popupwidth="600" data-popupheight="600">ログインまたは登録はこちら</a>';
 			$new_content = str_replace( $target, $target . $link, $content );
 			return $new_content;
 		}

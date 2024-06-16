@@ -786,8 +786,8 @@ msgid "Add functions PHP PRO"
 msgstr "Add functions PHP PRO"
 
 #. Plugin URI of the plugin/theme
-msgid "https://seripoyo.work/add-functions/"
-msgstr "https://seripoyo.work/add-functions/"
+msgid "https://add-functions-php.seripoyo.work/"
+msgstr "https://add-functions-php.seripoyo.work/"
 
 #. Description of the plugin/theme
 msgid ""

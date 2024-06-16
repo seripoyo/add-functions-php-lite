@@ -10,7 +10,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Add functions PHP Lite
- * Plugin URI: https://seripoyo.work/add-functions/
+ * Plugin URI: https://add-functions-php.seripoyo.work/
  * Description:       This is a Japanese plugin to customize WordPress without editing functions.php directly.
  * Version:           1.0.0
  * Requires at least: 5.9
@@ -118,6 +118,21 @@ if ( ! function_exists( 'add_functions_php_init' ) ) {
 if ( ! defined( 'ADD_FUNCTIONS_PHP_LITE_PATH' ) ) {
 	define( 'ADD_FUNCTIONS_PHP_LITE_PATH', 'add-functions-php-lite/add-functions-php-lite.php' );
 }
+// 現在のプラグインのパスを取得
+$current_plugin_path = plugin_basename( __FILE__ );
+
+// 指定されたパスと現在のプラグインのパスが一致するかどうかを確認
+if ( $current_plugin_path === ADD_FUNCTIONS_PHP_LITE_PATH ) {
+    if ( ! defined( 'UPDATE_PATH' ) ) {
+        // サーバーのパスを取得
+        $server_path = dirname( __FILE__ ) . '/';
+        
+        define( 'UPDATE_PATH', $server_path . 'update/' );
+        require_once UPDATE_PATH . 'AFP_Lite_plugin.php';
+    }
+}
+
+
 if ( ! class_exists( 'Add_Functions_PHP_Lite_Notification' ) ) {
 
 	class Add_Functions_PHP_Lite_Notification {

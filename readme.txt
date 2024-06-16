@@ -47,7 +47,7 @@ OR…
 - Are there any themes or plug-ins that are not recommended for use at the same time?
     - There is no particular theme or plugin that we do not recommend. However, you may not use the SEO function of this plugin while using the SEO plugin, for example, please respond according to your WordPress environment.
 - Can I make requests such as “I want this feature”?
-    - Yes, please send your feature requests and requests to [Forum](https://seripoyo.work/add-functions/forumn/forum/%e6%a9%9f%e8%83%bd%e3%81%ae%e3%83%aa%e3%82%af%e3%82%a8 You can post your requests and requests for features at [Forum](%e3%82%b9%e3%83%88%e3%83%bb%e3%81%94%e8%a6%81%e6%9c%9b%e3%81%aa%e3%81%a9/). Please submit images of functions you would like to see implemented here.
+    - Yes, please send your feature requests and requests to [Forum](https://add-functions-php.seripoyo.work/forumn/forum/%e6%a9%9f%e8%83%bd%e3%81%ae%e3%83%aa%e3%82%af%e3%82%a8 You can post your requests and requests for features at [Forum](%e3%82%b9%e3%83%88%e3%83%bb%e3%81%94%e8%a6%81%e6%9c%9b%e3%81%aa%e3%81%a9/). Please submit images of functions you would like to see implemented here.
     - However, please note that your submission may not necessarily be reflected in the update.
 - What should I do if I cannot use WordPress due to an error when using the plugin?
     
