@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author Easy Digital Downloads
  * @version 1.9.2
  */
-class AFP_Plugin_Updater {
+class AFP_LITE_Plugin_Updater {
 
 	private $api_url     = '';
 	private $api_data    = array();
@@ -115,13 +115,13 @@ class AFP_Plugin_Updater {
 		global $pagenow;
 
 		// error_log( 'check_update メソッドが呼び出されました。' );
-		error_log( '現在のページ: ' . $pagenow );
+		// error_log( '現在のページ: ' . $pagenow );
 
 		if ( ! is_object( $_transient_data ) ) {
-			error_log( '$_transient_data はオブジェクトではありません。新しい stdClass オブジェクトを作成します。' );
+			// error_log( '$_transient_data はオブジェクトではありません。新しい stdClass オブジェクトを作成します。' );
 			$_transient_data = new stdClass();
 		} else {
-			error_log( '$_transient_data はオブジェクトです。' );
+			// error_log( '$_transient_data はオブジェクトです。' );
 		}
 
 		if ( ! empty( $_transient_data->response ) && ! empty( $_transient_data->response[ $this->name ] ) && false === $this->wp_override ) {
@@ -139,12 +139,12 @@ class AFP_Plugin_Updater {
 		}
 
 		if ( false !== $version_info && is_object( $version_info ) && isset( $version_info->new_version ) ) {
-			error_log( '新しいバージョン情報が取得できました。現在のバージョンと比較します。' );
-			error_log( '現在のバージョン: ' . $this->version );
-			error_log( '新しいバージョン: ' . $version_info->new_version );
+			// error_log( '新しいバージョン情報が取得できました。現在のバージョンと比較します。' );
+			// error_log( '現在のバージョン: ' . $this->version );
+			// error_log( '新しいバージョン: ' . $version_info->new_version );
 
 			if ( version_compare( $this->version, $version_info->new_version, '<' ) ) {
-				error_log( '新しいバージョンが利用可能です。$_transient_data->response を更新します。' );
+				// error_log( '新しいバージョンが利用可能です。$_transient_data->response を更新します。' );
 				$_transient_data->response[ $this->name ] = (object) array(
 					'id'          => $this->name,
 					'slug'        => $this->slug,
@@ -154,7 +154,7 @@ class AFP_Plugin_Updater {
 					'url'         => isset( $version_info->url ) ? $version_info->url : '', // 修正箇所
 				);
 			} else {
-				error_log( '現在のバージョンが最新です。$_transient_data->no_update を更新します。' );
+				// error_log( '現在のバージョンが最新です。$_transient_data->no_update を更新します。' );
 				$_transient_data->no_update[ $this->name ] = (object) array(
 					'id'          => $this->name,
 					'slug'        => $this->slug,
@@ -397,7 +397,9 @@ class AFP_Plugin_Updater {
 			return $_data;
 
 		}
-
+		if ( ! isset( $_data->plugin ) ) {
+			$_data->plugin = $this->name;
+		}
 		$to_send = array(
 			'slug'   => $this->slug,
 			'is_ssl' => is_ssl(),
@@ -410,6 +412,14 @@ class AFP_Plugin_Updater {
 
 		// Get the transient where we store the api request for this plugin for 24 hours
 		$edd_api_request_transient = $this->get_cached_version_info();
+
+			// プラグインが無効化されたときにライセンス情報を空にする
+		if ( ! is_plugin_active( 'add-functions-php-lite/add-functions-php-lite.php' ) ) {
+			$_data->sections     = array();
+			$_data->banners      = array();
+			$_data->icons        = array();
+			$_data->contributors = array();
+		}
 
 		// If we have no transient-saved value, run the API, set a fresh transient with the API value, and return that value too right now.
 		if ( empty( $edd_api_request_transient ) ) {
@@ -450,6 +460,10 @@ class AFP_Plugin_Updater {
 			$_data->plugin = $this->name;
 		}
 
+		// Add the current version if it's not set
+		if ( ! isset( $_data->version ) ) {
+			$_data->version = $this->version;
+		}
 		return $_data;
 	}
 
@@ -605,7 +619,7 @@ class AFP_Plugin_Updater {
 			'php_version' => phpversion(),
 			'wp_version'  => get_bloginfo( 'version' ),
 		);
-		error_log( 'APIリクエストパラメータ: ' . print_r( $api_params, true ) );
+		// error_log( 'APIリクエストパラメータ: ' . print_r( $api_params, true ) );
 
 		$request = wp_remote_post(
 			$this->api_url,
@@ -652,7 +666,7 @@ class AFP_Plugin_Updater {
 		}
 
 		if ( isset( $version_info->package ) ) {
-			error_log( '更新パッケージのURL: ' . $version_info->package );
+			// error_log( '更新パッケージのURL: ' . $version_info->package );
 
 			// 更新パッケージのURLが正しいかどうかを確認
 			$package_url_check = wp_remote_get(
@@ -667,7 +681,7 @@ class AFP_Plugin_Updater {
 			} elseif ( 200 !== wp_remote_retrieve_response_code( $package_url_check ) ) {
 				error_log( '更新パッケージのURLが無効です。応答コード: ' . wp_remote_retrieve_response_code( $package_url_check ) );
 			} else {
-				error_log( '更新パッケージのURLは有効です。' );
+				// error_log( '更新パッケージのURLは有効です。' );
 			}
 		} else {
 			error_log( 'APIレスポンスの更新パッケージが見つかりませんでした。' );
