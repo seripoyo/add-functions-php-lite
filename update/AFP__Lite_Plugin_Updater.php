@@ -22,6 +22,7 @@ class AFP_Plugin_Updater {
 	private $beta        = false;
 	private $failed_request_cache_key;
 
+
 	/**
 	 * 関数：__construct
 	 * 概要：クラスのコンストラクタ（初期化処理）
@@ -48,7 +49,7 @@ class AFP_Plugin_Updater {
 		$this->api_url                  = trailingslashit( $_api_url );
 		$this->api_data                 = $_api_data;
 		$this->plugin_file              = $_plugin_file;
-		$this->name                     = ADD_FUNCTIONS_PHP_TRIAL_PATH;
+		$this->name                     = 'add-functions-php-lite/add-functions-php-lite.php';
 		$this->slug                     = 'add-functions-php-lite';
 		$this->version                  = $_api_data['version'];
 		$this->wp_override              = isset( $_api_data['wp_override'] ) ? (bool) $_api_data['wp_override'] : false;
@@ -81,10 +82,9 @@ class AFP_Plugin_Updater {
 	public function init() {
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ) );
 		add_filter( 'plugins_api', array( $this, 'plugins_api_filter' ), 10, 3 );
-		// add_action( 'after_plugin_row', array( $this, 'show_update_notification' ), 10, 2 );
+		add_action( 'after_plugin_row', array( $this, 'show_update_notification' ), 10, 2 );
 		add_action( 'admin_init', array( $this, 'show_changelog' ) );
-		// add_action( 'admin_init', array( $this, 'force_check_update' ) );
-		add_action( 'admin_notices', array( $this, 'show_update_notice' ) );
+		add_action( 'admin_init', array( $this, 'force_check_update' ) ); // 追加
 	}
 	/**
 	 * 関数：force_check_update
@@ -114,15 +114,29 @@ class AFP_Plugin_Updater {
 	public function check_update( $_transient_data ) {
 		global $pagenow;
 
+		// error_log( 'check_update メソッドが呼び出されました。' );
+		error_log( '現在のページ: ' . $pagenow );
+
 		if ( ! is_object( $_transient_data ) ) {
+			error_log( '$_transient_data はオブジェクトではありません。新しい stdClass オブジェクトを作成します。' );
 			$_transient_data = new stdClass();
+		} else {
+			error_log( '$_transient_data はオブジェクトです。' );
 		}
 
 		if ( ! empty( $_transient_data->response ) && ! empty( $_transient_data->response[ $this->name ] ) && false === $this->wp_override ) {
+			// error_log( '$_transient_data->response が存在し、このプラグインの情報が含まれており、wp_override が false です。早期リターンします。' );
 			return $_transient_data;
 		}
 
+		// error_log( 'get_version_from_remote 関数を呼び出します。' );
 		$version_info = $this->get_version_from_remote();
+
+		if ( false === $version_info ) {
+			// error_log( 'get_version_from_remote 関数が false を返しました。' );
+		} else {
+			// error_log( 'get_version_from_remote 関数が以下の情報を返しました: ' . print_r( $version_info, true ) );
+		}
 
 		if ( false !== $version_info && is_object( $version_info ) && isset( $version_info->new_version ) ) {
 			error_log( '新しいバージョン情報が取得できました。現在のバージョンと比較します。' );
@@ -137,11 +151,8 @@ class AFP_Plugin_Updater {
 					'plugin'      => $this->name,
 					'new_version' => $version_info->new_version,
 					'package'     => $version_info->package,
-					'url'         => isset( $version_info->url ) ? $version_info->url : '',
+					'url'         => isset( $version_info->url ) ? $version_info->url : '', // 修正箇所
 				);
-
-				// フラグを設定
-				update_option( 'afp_lite_update_available', true );
 			} else {
 				error_log( '現在のバージョンが最新です。$_transient_data->no_update を更新します。' );
 				$_transient_data->no_update[ $this->name ] = (object) array(
@@ -149,11 +160,8 @@ class AFP_Plugin_Updater {
 					'slug'        => $this->slug,
 					'plugin'      => $this->name,
 					'new_version' => $version_info->new_version,
-					'url'         => isset( $version_info->url ) ? $version_info->url : '',
+					'url'         => isset( $version_info->url ) ? $version_info->url : '', // 修正箇所
 				);
-
-				// フラグをリセット
-				update_option( 'afp_lite_update_available', false );
 			}
 		} else {
 			error_log( '新しいバージョン情報が取得できませんでした。' );
@@ -162,38 +170,10 @@ class AFP_Plugin_Updater {
 		$_transient_data->last_checked           = time();
 		$_transient_data->checked[ $this->name ] = $this->version;
 
+		// error_log( '最終的な $_transient_data の内容: ' . print_r( $_transient_data, true ) );
+
 		return $_transient_data;
 	}
-
-	/**
-	 * 関数：show_update_notice
-	 * 概要：管理画面にアップデート通知を表示
-	 **/
-	public function show_update_notice() {
-		$current_version = $this->version; // 現在のバージョン
-		$latest_version  = $this->get_version_from_remote()->new_version; // 最新バージョン
-
-if ( version_compare( $current_version, $latest_version, '<' ) ) {
-    $h3 = __( 'Notices from Add functions PHP', 'add-functions-php' );
-    $message = __( 'Updates have been made since the current version. This plug-in is a trial version and cannot be updated to the latest version, so please purchase the PRO version if you want to get the latest version!<br><a href="https://add-functions-php.seripoyo.work/log/" target="_blank">Click here for details of the update.</a>', 'add-functions-php' );
-
-    // 日本語の翻訳を追加
-    $h3_ja = __( 'Add functions PHPからのお知らせ', 'add-functions-php' );
-    $message_ja = __( '現在のバージョンからアップデートが行われました。この体験版プラグインはアップデートはできないため、最新バージョンの入手を希望する方はPRO版をご購入ください。<br><a href="https://add-functions-php.seripoyo.work/log/" target="_blank">アップデート詳細はこちら</a>', 'add-functions-php' );
-
-    // 現在の言語を取得
-    $current_locale = get_locale();
-
-    // 言語に応じてメッセージを切り替え
-    if ( 'ja' === $current_locale ) {
-        $h3 = $h3_ja;
-        $message = $message_ja;
-    }
-
-    echo '<div class="notice notice-warning is-dismissible"><h3>' . $h3 . '</h3><p>' . $message . '</p></div>';
-}
-	}
-
 	/**
 	 * 関数：get_repo_api_data
 	 * 概要：リポジトリのAPIデータを取得し、キャッシュに保存
@@ -259,13 +239,128 @@ if ( version_compare( $current_version, $latest_version, '<' ) ) {
 	}
 
 	/**
-	 * 関数：get_tested_version
-	 * 概要：プラグインのテスト済みバージョンを取得
+	 * プラグインの更新通知をマルチサイトのサブサイトに表示する関数
 	 *
-	 * @param object - $version_info: バージョン情報オブジェクト
-	 * @return string|null - テスト済みバージョン、または取得できない場合はnull
-	 **/
+	 * @param string $file プラグインファイルのパス
+	 * @param array  $plugin プラグインの情報
+	 */
+	public function show_update_notification( $file, $plugin ) {
 
+		// ネットワーク管理画面にいる場合、またはマルチサイトインストールでない場合は早期に終了
+		if ( is_network_admin() || ! is_multisite() ) {
+			return;
+		}
+
+		// シングルサイトの管理者が更新が利用可能であることを確認できるようにする
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
+		// 現在のプラグインファイルがこのプラグインでない場合は早期に終了
+		if ( $this->name !== $file ) {
+			return;
+		}
+
+		// 更新が存在しない場合はメッセージを表示しない
+		$update_cache = get_site_transient( 'update_plugins' );
+
+		// 更新キャッシュがオブジェクトでない場合、新しいオブジェクトを作成
+		if ( ! isset( $update_cache->response[ $this->name ] ) ) {
+			if ( ! is_object( $update_cache ) ) {
+				$update_cache = new stdClass();
+			}
+			// リポジトリから最新のプラグインデータを取得してキャッシュに保存
+			$update_cache->response[ $this->name ] = $this->get_repo_api_data();
+		}
+
+		// プラグインが更新キャッシュに存在しない場合、または現在のバージョンが最新バージョン以上の場合は早期に終了
+		if ( empty( $update_cache->response[ $this->name ] ) || version_compare( $this->version, $update_cache->response[ $this->name ]->new_version, '>=' ) ) {
+			return;
+		}
+
+		// 更新通知のHTMLを出力
+		printf(
+			'<tr class="plugin-update-tr %3$s" id="%1$s-update" data-slug="%1$s" data-plugin="%2$s">',
+			$this->slug,
+			$file,
+			in_array( $this->name, $this->get_active_plugins(), true ) ? 'active' : 'inactive'
+		);
+
+		echo '<td colspan="3" class="plugin-update colspanchange">';
+		echo '<div class="update-message notice inline notice-warning notice-alt"><p>';
+
+		// 変更ログのリンクを生成
+		$changelog_link = '';
+		if ( ! empty( $update_cache->response[ $this->name ]->sections->changelog ) ) {
+			$changelog_link = add_query_arg(
+				array(
+					'edd_sl_action' => 'view_plugin_changelog',
+					'plugin'        => urlencode( $this->name ),
+					'slug'          => urlencode( $this->slug ),
+					'TB_iframe'     => 'true',
+					'width'         => 77,
+					'height'        => 911,
+				),
+				self_admin_url( 'index.php' )
+			);
+		}
+
+		// 更新リンクを生成
+		$update_link = add_query_arg(
+			array(
+				'action' => 'upgrade-plugin',
+				'plugin' => urlencode( $this->name ),
+			),
+			self_admin_url( 'update.php' )
+		);
+
+		// 更新通知メッセージを表示
+		printf(
+		/* translators: the plugin name. */
+			esc_html__( 'There is a new version of %1$s available.', 'easy-digital-downloads' ),
+			esc_html( $plugin['Name'] )
+		);
+
+		// プラグインの更新権限がない場合のメッセージ
+		if ( ! current_user_can( 'update_plugins' ) ) {
+			echo ' ';
+			esc_html_e( 'Contact your network administrator to install the update.', 'easy-digital-downloads' );
+		} elseif ( empty( $update_cache->response[ $this->name ]->package ) && ! empty( $changelog_link ) ) {
+			// 更新パッケージがない場合のメッセージ
+			echo ' ';
+			printf(
+			/* translators: 1. opening anchor tag, do not translate 2. the new plugin version 3. closing anchor tag, do not translate. */
+				__( '%1$sView version %2$s details%3$s.', 'easy-digital-downloads' ),
+				'<a target="_blank" class="thickbox open-plugin-details-modal" href="' . esc_url( $changelog_link ) . '">',
+				esc_html( $update_cache->response[ $this->name ]->new_version ),
+				'</a>'
+			);
+		} elseif ( ! empty( $changelog_link ) ) {
+			// 更新パッケージがある場合のメッセージ
+			echo ' ';
+			printf(
+				__( '%1$sView version %2$s details%3$s or %4$supdate now%5$s.', 'easy-digital-downloads' ),
+				'<a target="_blank" class="thickbox open-plugin-details-modal" href="' . esc_url( $changelog_link ) . '">',
+				esc_html( $update_cache->response[ $this->name ]->new_version ),
+				'</a>',
+				'<a target="_blank" class="update-link" href="' . esc_url( wp_nonce_url( $update_link, 'upgrade-plugin_' . $file ) ) . '">',
+				'</a>'
+			);
+		} else {
+			// 更新リンクのみのメッセージ
+			printf(
+				' %1$s%2$s%3$s',
+				'<a target="_blank" class="update-link" href="' . esc_url( wp_nonce_url( $update_link, 'upgrade-plugin_' . $file ) ) . '">',
+				esc_html__( 'Update now.', 'easy-digital-downloads' ),
+				'</a>'
+			);
+		}
+
+		// プラグイン更新メッセージのフックを実行
+		do_action( "in_plugin_update_message-{$file}", $plugin, $plugin );
+
+		echo '</p></div></td></tr>';
+	}
 
 	/**
 	 * 関数：get_active_plugins
@@ -568,36 +663,14 @@ if ( version_compare( $current_version, $latest_version, '<' ) ) {
 				)
 			);
 			if ( is_wp_error( $package_url_check ) ) {
-					error_log( '更新パッケージのURLが無効です。エラー: ' . $package_url_check->get_error_message() );
-					error_log( 'リクエストしたURL: ' . $version_info->package );
-					error_log(
-						'リクエストパラメータ: ' . print_r(
-							array(
-								'timeout'   => 15,
-								'sslverify' => $this->verify_ssl(),
-							),
-							true
-						)
-					);
+				error_log( '更新パッケージのURLが無効です。エラー: ' . $package_url_check->get_error_message() );
 			} elseif ( 200 !== wp_remote_retrieve_response_code( $package_url_check ) ) {
 				error_log( '更新パッケージのURLが無効です。応答コード: ' . wp_remote_retrieve_response_code( $package_url_check ) );
-				error_log( 'リクエストしたURL: ' . $version_info->package );
-				error_log(
-					'リクエストパラメータ: ' . print_r(
-						array(
-							'timeout'   => 15,
-							'sslverify' => $this->verify_ssl(),
-						),
-						true
-					)
-				);
-				// error_log( 'レスポンスボディ: ' . wp_remote_retrieve_body( $package_url_check ) );
 			} else {
 				error_log( '更新パッケージのURLは有効です。' );
 			}
 		} else {
 			error_log( 'APIレスポンスの更新パッケージが見つかりませんでした。' );
-			error_log( 'APIレスポンス: ' . print_r( $version_info, true ) );
 		}
 
 		return $version_info;

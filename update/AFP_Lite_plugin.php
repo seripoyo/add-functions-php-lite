@@ -31,7 +31,6 @@ if ( ! class_exists( 'AFP_Plugin_Updater' ) ) {
 }
 
 add_action( 'admin_init', 'AFP_auto_activate_license' );
-add_action( 'admin_init', 'AFP_set_license_key' );
 add_action( 'init', 'AFP__updater' );
 add_filter(
 	'pre_set_site_transient_update_plugins',
@@ -545,6 +544,35 @@ function AFP_check_license() {
 add_action( 'wp_ajax_AFP_check_license', 'AFP_check_license' );
 
 
+/**
+ * 関数：AFP_admin_notices
+ * 概要：管理画面にライセンス関連の通知を表示する
+ *
+ * 詳細：ライセンス認証の結果に応じて、管理画面にメッセージを表示する。
+ **/
+function AFP_admin_notices() {
+	if ( isset( $_GET['sl_activation'] ) && ! empty( $_GET['message'] ) ) {
+
+		switch ( $_GET['sl_activation'] ) {
+
+			case 'false':
+				$message = urldecode( $_GET['message'] );
+				?>
+				<div class="error">
+					<p><?php echo wp_kses_post( $message ); ?></p>
+				</div>
+				<?php
+				break;
+
+			case 'true':
+			default:
+				// Developers can put a custom success message here for when activation is successful if they way.
+				break;
+
+		}
+	}
+}
+add_action( 'admin_notices', 'AFP_admin_notices' );
 
 /**
  * 関数：AFP_get_version_info
@@ -601,6 +629,80 @@ function AFP_get_version_info( $license_key ) {
 
 
 /**
+ * 関数：AFP_show_update_notification
+ * 概要：プラグイン一覧ページにアップデート通知を表示する
+ *
+ * @param array -  $plugin_data: プラグインのメタデータ
+ * @param string - $plugin_file: プラグインのファイルパス
+ *
+ * 詳細：プラグインのファイルパスが一致し、ライセンスキーが設定されている場合、最新バージョン情報を取得する。現在のバージョンと最新バージョンを比較し、新しいバージョンが利用可能な場合にアップデート通知を表示する。
+ **/
+function AFP_show_update_notification( $plugin_data, $plugin_file ) {
+	// error_log( 'AFP_show_update_notification 関数が呼び出されました。' );
+	// error_log( '現在のページ: ' . $GLOBALS['pagenow'] );
+
+	// プラグインファイルのパスが一致するかチェック
+	if ( $plugin_file !== AFP_PLUGIN_BASE_NAME ) {
+		// error_log( 'このプラグインは対象外です。プラグインファイル: ' . $plugin_file );
+		return;
+	}
+	// error_log( 'このプラグインは対象です。プラグインファイル: ' . $plugin_file );
+
+	// ライセンスキーが設定されているかチェック
+	$license_key = trim( get_option( 'AFP_license_key' ) );
+	if ( empty( $license_key ) ) {
+		// error_log( 'ライセンスキーが設定されていません。' );
+		return;
+	}
+	// error_log( 'ライセンスキーが設定されています: ' . $license_key );
+
+	// 最新バージョン情報を取得
+	$version_info = AFP_get_version_info( $license_key );
+	if ( ! is_object( $version_info ) || ! isset( $version_info->new_version ) ) {
+		// error_log( '最新バージョン情報が取得できませんでした。' );
+		// error_log( 'バージョン情報: ' . print_r( $version_info, true ) );
+		return;
+	}
+	error_log( '最新バージョン情報が取得できました: ' . $version_info->new_version );
+
+	// 現在のバージョンと最新バージョンを比較
+	$current_version = AFP_VERSION;
+	if ( version_compare( $current_version, $version_info->new_version, '>=' ) ) {
+		// error_log( '現在のバージョンが最新です。現在のバージョン: ' . $current_version . ', 最新バージョン: ' . $version_info->new_version );
+		return;
+	}
+	error_log( '新しいバージョンが利用可能です。現在のバージョン: ' . $current_version . ', 最新バージョン: ' . $version_info->new_version );
+
+	// error_log( '新しいバージョンが利用可能です。' );
+}
+
+/**
+ * 関数：AFP_plugin_row_meta
+ * 概要：プラグインの追加情報を表示する
+ *
+ * @param array -  $links: プラグインの情報リンク
+ * @param string - $file: プラグインのファイルパス
+ * @return array - 変更後のプラグインの情報リンク
+ *
+ * 詳細：プラグインのファイルパスが一致する場合、アップデート通知を表示する。
+ **/
+function AFP_plugin_row_meta( $links, $file ) {
+	// error_log( 'AFP_plugin_row_meta 関数が呼び出されました。' );
+	// プラグインファイルのパスが一致するかチェック
+	if ( $file === AFP_PLUGIN_BASE_NAME ) {
+		error_log( 'このプラグインは対象です。プラグインファイル: ' . $file );
+		$plugin_data = get_plugin_data( __FILE__ );
+		AFP_show_update_notification( $plugin_data, $file );
+	} else {
+		error_log( 'このプラグインは対象外です。プラグインファイル: ' . $file );
+		error_log( 'このプラグインは対象外です。プラグインファイルのパス: ' . AFP_PLUGIN_BASE_NAME );
+	}
+	return $links;
+}
+add_filter( 'plugin_row_meta', 'AFP_plugin_row_meta', 10, 2 );
+
+
+/**
  * 関数：AFP_add_settings_link
  * 概要：プラグインのアクションリンクに設定ページのリンクを追加する
  *
@@ -626,16 +728,3 @@ function AFP_add_settings_link() {
 	);
 }
 add_action( 'admin_init', 'AFP_add_settings_link' );
-
-
-/**
- * 関数：AFP_set_license_key
- * 概要：ライセンスキーをデータベースに設定する
- *
- * 詳細：プラグインの初期化時にライセンスキーをデータベースに設定する。
- **/
-function AFP_set_license_key() {
-	$license_key = 'S3FXSGGTFHV95QMH0TRTAZDH4X7CCJV4';
-	update_option( 'AFP_license_key', $license_key );
-}
-add_action( 'admin_init', 'AFP_set_license_key' );
