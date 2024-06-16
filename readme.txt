@@ -1,10 +1,10 @@
 === Add functions PHP Lite ===
 Contributors: seripoyo0112
 Tags: php,functions.php,dashboard,code,code-snippets
-Donate link: https://seripoyo.work/add-functions
+Donate link: https://add-functions-php.seripoyo.work
 Requires at least: 5.9
-Tested up to: 6.5.3
-Requires PHP: 6.0
+Tested up to: 6.5.4
+Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
