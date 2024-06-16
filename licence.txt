@@ -1,0 +1,40 @@
+Here is the license for the svg icons loaded in this plugin.
+
+Copyright 2024, Seripoyo.
+
+Licensed under the GPL License, Version 3.0.
+See: http://www.gnu.org/licenses/gpl-3.0.html
+
+Some SVGs use icon data from the "IcoMoon-Free" package.
+See: https://icomoon.io/#icons-icomoon
+
+BlendIcons Icons
+https://blendicons.com/
+
+Icons made by BlendIcons (https://blendicons.com/) are licensed under a Creative Commons Attribution 4.0 International License (https://creativecommons.org/licenses/by/4.0/).
+
+You are free to:
+- Use the icons for personal and commercial projects
+- Modify the icons
+
+Under the following conditions:
+- You must attribute the icons to BlendIcons with a link to https://blendicons.com/
+- You may not sell the icons without making significant modifications
+- You may not create a similar or competing service by compiling BlendIcons icons
+
+Please see the full license details at https://blendicons.com/license/
+
+Simple Icons
+https://simpleicons.org/
+
+Icons made by Simple Icons (https://simpleicons.org/) are licensed under the Creative Commons Zero v1.0 Universal (CC0 1.0) Public Domain Dedication.
+
+You are free to:
+- Use the icons for any purpose, even commercially
+- Modify the icons
+- Distribute the icons
+- Use the icons without asking for permission
+
+No attribution is required, but it is appreciated if you credit Simple Icons.
+
+Please see the full license details at https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md

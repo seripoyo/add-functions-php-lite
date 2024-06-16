@@ -1,0 +1,55 @@
+@charset "UTF-8";
+// ===============================================================
+// use
+// ===============================================================
+
+// foundationフォルダ
+// リセットCSS
+// @use "../scss/foundation/reset";
+// // ベースとなるCSS
+// @use "../scss/foundation/base";
+
+// layoutフォルダ
+// ヘッダーCSS
+// @use "../scss/layout/l-header";
+// // フッターCSS
+// @use "../scss/layout/l-footer";
+
+// // メインーCSS
+// @use "../scss/layout/l-main";
+// // サイドバーCSS
+// @use "../scss/layout/l-sidebar";
+
+// projectフォルダ
+// グローバルナビ（ヘッダー）CSS
+// @use "../scss/parts/project/p-nav";
+// グローバルナビ（ヘッダー:スマホ用）CSS
+// @use "../scss/parts/icon";
+// @use "../scss/setting/base";
+// @use "../scss/parts/contents";
+// @use "../scss/parts/heading";
+// @use "../scss/parts/fv";
+// @use "../scss/setting/fonts";
+@use "../sass/setting/icon";
+@use "../sass/setting/base";
+@use "../sass/style/style";
+@use "../sass/style/inputs";
+@use "../sass/style/colorpicker";
+@use "../sass/style/tab";
+@use "../sass/post/seo";
+
+@use "../sass/style/side-menu";
+@use "../sass/style/wp-custom";
+@use "../sass/style/widgets-setting";
+
+// componentフォルダ
+// 見出しCSS
+// @use "../scss/parts/component/c-headline";
+// // ボタンCSS
+// @use "../scss/parts/component/c-button";
+// // お知らせ一覧表の情報分類マークのCSS
+// @use "../scss/parts/component/c-info-category";
+
+.edd-admin-page{
+	
+}

@@ -1,0 +1,109 @@
+@use "../setting/forwards" as fw;
+
+// =================================================
+// カスタム案
+// =================================================
+
+.wp-menu-name {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+#wpcontent,
+#wpfooter {
+    margin-left: 180px;
+}
+#adminmenu,
+#adminmenu .wp-submenu,
+#adminmenuback,
+#adminmenuwrap {
+    width: 180px;
+}
+#adminmenu .wp-submenu {
+    width: 172px;
+}
+#adminmenu .wp-submenu {
+    left: 180px;
+}
+#adminmenu li.menu-top {
+    padding-left: 8px;
+}
+#adminmenu div.wp-menu-image:before {
+    color: white;
+}
+#collapse-button .collapse-button-icon:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "icon-fonts" !important;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: none;
+    speak: never;
+    display: inline-block;
+    content: "\e9e8";
+}
+ul#adminmenu a.wp-has-current-submenu:after,
+ul#adminmenu > li.current > a.current:after {
+    content: none;
+}
+ul#adminmenu li.current {
+    position: relative;
+}
+ul#adminmenu li.current:after {
+    right: 0;
+    border: solid 8px transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: #f0f0f1;
+    top: 15px;
+    margin-top: -8px;
+}
+// #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu
+
+#adminmenu a:focus,
+#adminmenu a:hover,
+.folded #adminmenu .wp-submenu-head:hover {
+    box-shadow: none;
+}
+// #adminmenu li.menu-top:hover,
+// #adminmenu li.opensub > a.menu-top,
+// #adminmenu li > a.menu-top:focus {
+//     box-shadow: inset 4px 0 0 0 currentColor;
+// }
+
+// 保留
+li.current {
+    box-shadow: inset 4px 0 0 0 currentColor;
+}
+#wpcontent span.dashicons {
+    font-family: dashicons;
+}
+
+th#postid {
+    width: 80px !important;
+}
+// th#last_updated {
+//     width: 130px;
+// }
+// th#categories {
+//     width: 135px;
+// }
+// th#title {
+//     width: 400px;
+// }
+// =================================================
+// 一覧に出力するアイキャッチ画像
+// =================================================
+img.post_eyecatch_img.wp-post-image {
+    object-fit: contain;
+    max-width: 192px;
+    max-height: 108px;
+}
+th#featured_image,
+td.featured_image.column-featured_image {
+    width: 200px;
+}

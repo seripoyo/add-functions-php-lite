@@ -1,0 +1,96 @@
+@use "../setting/forwards" as fw;
+
+#wpwrap {
+    .flex_list {
+        // display: flex;
+        // flex-wrap: wrap;
+        li {
+            // width: 33%;
+            // margin-top: 8px;
+        }
+    }
+}
+
+// =================================================
+// Grid
+// =================================================
+
+.grid-container {
+    display: grid;
+    // grid-template-columns: page_admin.phpにてPHPで動的に出力
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    left: -18px;
+    div.grid-item {
+        text-align: center;
+        &.label {
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 2;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+    }
+    // 途中から固定表示
+    // =================================================
+    .grid_header {
+        height: 70px;
+        position: sticky;
+        top: 31px;
+        z-index: 999;
+        padding: 0 2rem;
+        background: #ffffffcf;
+        .grid-item.label {
+            width: 130px;
+            height: 100%;
+            display: grid;
+            place-content: center;
+            font-weight: bold;
+        }
+        .grid-item.label.custom {
+            width: 300px;
+        }
+        .grid-item.label.heading {
+            width: 200px;
+        }
+    }
+    .grid_form_contents {
+        // grid-gap: 30px;
+    }
+}
+.grid_form_contents {
+    .grid_form_contents_item {
+        position: relative;
+        padding: 1rem 2rem;
+        &:nth-of-type(2n) {
+        }
+        &:nth-of-type(2n-1) {
+            background: #d5eef6;
+        }
+    }
+}
+
+#SideMenu_custom {
+    .toggle .toggle__input:checked + .toggle__slider:after {
+        left: 0;
+    }
+    .grid-item.label {
+        display: grid;
+        place-content: center;
+        place-items: center;
+    }
+}
+// =================================================
+// カラーピッカー
+// =================================================
+
+.alpha-color-picker-wrap .wp-picker-container {
+    display: flex;
+    margin-top: 0.5rem;
+}
+#login_logo_container {
+    #login_logo_preview {
+        width: 100px;
+    }
+}

@@ -1,0 +1,97 @@
+@use "../setting/forwards" as fw;
+
+.dashicon-picker-container {
+	position: absolute;
+	width: 270px;
+	background-color: #fff;
+	box-shadow: -1px 2px 5px 3px rgba(0, 0, 0, 0.41);
+	height: 300px;
+	overflow: scroll;
+	padding: 5px;
+	box-sizing: border-box;
+	&#widget_icon_btn {
+		width: 400px !important;
+	}
+	ul.dashicon-picker-list {
+		display: grid;
+		grid-template-columns: repeat(10, 35px);
+		justify-content: center;
+		align-items: center;
+		gap: 5px 2px;
+		li {
+			display: grid;
+			place-content: center;
+			position: relative;
+			a {
+				cursor: pointer;
+				position: relative;
+				span {
+					font-size: 18px;
+					position: relative;
+				}
+			}
+		}
+	}
+}
+
+.add-icon-chevron_left:before,
+.add-icon-chevron_right:before {
+	position: relative;
+	top: 50%;
+	left: 4px;
+}
+.add-icon-chevron_right:before,
+.add-icon-expand_less:before,
+.add-icon-expand_more:before,
+.add-icon-arrow_drop_down:before,
+.add-icon-arrow_drop_up:before {
+	position: relative;
+	top: 50%;
+	left: 2px;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#SideMenu_custom {
+	span.setting_icon_preview {
+		&:before {
+			color: black !important;
+		}
+	}
+}
+
+#adminmenu [class^="add-icon-"]::before,
+#adminmenu [class*=" add-icon-"]::before {
+	/* use !important to prevent issues with browser extensions that change fonts */
+
+	display: inline-block;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	speak: never;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	width: 20px;
+	height: 20px;
+	font-size: 18px !important;
+	vertical-align: top;
+	text-align: center;
+}
+// =================================================
+// アイコンピッカー
+// =================================================

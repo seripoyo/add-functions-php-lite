@@ -1,0 +1,277 @@
+// breakpointsの設定
+$breakpoints: (
+	"sm": 520px,
+	"md": 960px,
+	"lg": 1200px
+) !default;
+
+/* メディアクエリのmixin
+/* ======================================== */
+// @mixin mq($breakpoint) {
+//   @media #{map-get($breakpoints, $breakpoint)} {
+//     @content;
+//   }
+// }
+@mixin mq($breakpoint-name, $type: min) {
+	@if $type == max {
+		@media screen and (max-width: map-get($breakpoints, $breakpoint-name)) {
+			@content;
+		}
+	} @else if $type == min {
+		@media screen and (min-width: map-get($breakpoints, $breakpoint-name)) {
+			@content;
+		}
+		@media print {
+			@content;
+		}
+	} @else {
+		$min-width: map-get($breakpoints, $breakpoint-name);
+		$max-width: map-get($breakpoints, $type);
+		@if $min-width and $max-width {
+			@media screen and (min-width: $min-width) and (max-width: $max-width) {
+				@content;
+			}
+		}
+	}
+}
+
+// =========================================================
+// ダッシュボードで使うCSSを読み込む
+// =========================================================
+
+/**
+ * ダッシュボードで使うCSSを読み込む
+ */
+.add-custom-widget {
+	li {
+		border-radius: 5px;
+	}
+}
+
+.add_wcustom_widget {
+	li {
+		border-radius: 5px;
+	}
+}
+
+.inside {
+	ul {
+		&.add-custom-widget {
+			&.widget01 {
+				display: grid;
+				// grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(2, 1fr);
+				grid-column-gap: 0px;
+				grid-row-gap: 0px;
+
+				li {
+					// width: 33%;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					font-family: "tsuku";
+					@include mq(lg, max) {
+						width: 50%;
+					}
+					@include mq(sm, max) {
+						width: 100%;
+					}
+					a {
+						text-decoration: none;
+						font-family: "tsuku";
+						text-align: center;
+						display: flex;
+						// flex-direction: column;
+						justify-content: flex-start;
+						align-items: center;
+						width: 90%;
+						border-radius: 5px;
+						background: white;
+						box-shadow: 0 3px 0 #1a5735;
+						border-right-color: rgb(24 83 32 / 50%);
+						border-bottom-color: rgb(24 83 32 / 50%);
+						-webkit-backdrop-filter: blur(20px);
+						backdrop-filter: blur(7px);
+						-webkit-box-shadow: 3px 3px 8px rgba(8, 23, 1, 0.51);
+						box-shadow: 3px 3px 8px rgba(8, 23, 1, 0.51);
+						height: 100%;
+						text-decoration: none;
+						margin: 10px auto;
+						// padding-top: 20px;
+						span {
+							height: 100%;
+							display: flex;
+							align-items: center;
+							// width: 30%;
+							background: #060e99;
+							justify-content: center;
+							margin-right: 1rem;
+							aspect-ratio: 1/1;
+							border-radius: 5px 0 0 5px;
+							&:before {
+								font-size: 18px;
+								color: white;
+							}
+						}
+						p.dashboard_btn_label {
+							font-size: 110%;
+							color: #074223;
+						}
+					}
+				}
+			}
+
+			&.widget02 {
+				display: grid;
+				// grid-template-columns: repeat(4, 1fr);
+				// 3、4列の時は    grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: repeat(2, 1fr);
+				grid-column-gap: 15px;
+				grid-row-gap: 15px;
+				li {
+					// background: #eb6100;
+					// border-bottom: 5px solid #b84c00;
+					-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+					box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+					-webkit-transition: all 0.3s;
+					transition: all 0.3s;
+					&:hover {
+						box-shadow: 0;
+					}
+					a {
+						display: grid;
+						grid-template-columns: 0.5fr 1fr;
+						height: 100%;
+						span {
+							display: grid;
+							place-content: center;
+							&:before {
+								color: white;
+								font-size: 25px;
+							}
+						}
+						p {
+							color: white;
+							font-size: 17px;
+						}
+					}
+				}
+			}
+			&.widget03 {
+				display: grid;
+				// grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(2, 1fr);
+				grid-column-gap: 15px;
+				grid-row-gap: 15px;
+				li {
+					background: #060e99;
+					padding: 30px 15px;
+					a {
+						display: grid;
+						place-content: center;
+						place-items: center;
+						height: 100%;
+						span {
+							&:before {
+								color: white;
+								font-size: 45px;
+							}
+						}
+						p {
+							color: white;
+							font-size: 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#widget_icon_btn.dashicon-picker-container{
+	width: 370px !important;
+}
+#widgets_icon.dashicon-picker-container {
+	text-align: center;
+	width: 750px;
+	ul.dashicon-picker-list {
+		grid-template-columns: repeat(20, 35px);
+		li {
+			a {
+				span {
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+#widgets_dashboard {
+	.input_item_wrapper {
+		display: grid;
+		grid-template-columns: 0.5fr 1fr;
+		grid-template-rows: repeat(2, auto);
+		grid-column-gap: 3px;
+		grid-row-gap: 3px;
+		.grid_form_contents_item {
+			&.widgets_url {
+				input {
+					width: 350px;
+				}
+			}
+		}
+	}
+	.widget_url_label {
+		input {
+			width: 350px;
+		}
+	}
+	input#widget_label {
+		width: 80%;
+	}
+}
+body {
+	&.dashboard-columns-1 .inside ul.add-custom-widget {
+		&.widget01 {
+			grid-template-columns: repeat(4, 1fr);
+		}
+		&.widget03 {
+			grid-template-columns: repeat(5, 1fr);
+		}
+		&.widget02 {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+	&.dashboard-columns-2 .inside ul.add-custom-widget {
+		&.widget01 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&.widget03 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		&.widget02 {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	&.dashboard-columns-3 .inside ul.add-custom-widget {
+		&.widget01 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&.widget03 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&.widget02 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	&.dashboard-columns-4 .inside ul.add-custom-widget {
+		&.widget01 {
+			grid-template-columns: repeat(2, 1fr) !important;
+		}
+		&.widget03 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&.widget02 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}

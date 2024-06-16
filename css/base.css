@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/* メディアクエリのmixin
+/* ======================================== */
+/* ===========================================
+ * 使用カラー
+ * ======================================== */
+/*====================================
+中央配置＆左寄せリスト
+ ====================================*/
+#widgets_icon.dashicon-picker-container {
+  text-align: center;
+  width: 750px;
+}
+#widgets_icon.dashicon-picker-container ul.dashicon-picker-list {
+  grid-template-columns: repeat(20, 35px);
+}
+#widgets_icon.dashicon-picker-container ul.dashicon-picker-list li a span {
+  font-size: 20px;
+}
+
+#widgets_dashboard .input_item_wrapper .grid_form_contents_item.widgets_url input {
+  width: 350px;
+}/*# sourceMappingURL=base.css.map */

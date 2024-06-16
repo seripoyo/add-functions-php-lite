@@ -1,0 +1,31 @@
+@use "../setting/forwards" as fw;
+
+// ウィジェット
+
+#widgets_icon.dashicon-picker-container {
+    text-align: center;
+    width: 750px;
+    ul.dashicon-picker-list {
+        grid-template-columns: repeat(20, 35px);
+        li {
+            a {
+                span {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+#widgets_dashboard {
+    .input_item_wrapper {
+        .grid_form_contents_item {
+            &.widgets_url {
+                input {
+                    width: 350px;
+                }
+            }
+        }
+    }
+}
+// widgets_dashboard
+

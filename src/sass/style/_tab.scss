@@ -1,0 +1,164 @@
+@use "../setting/forwards" as fw;
+
+
+// =================================================
+// functions.phpに追加する機能
+// コードの追加textarea
+// =================================================
+
+ul.tab::-webkit-scrollbar-thumb {
+    background-color: blue;
+    background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
+    border-radius: 10px;
+}
+
+ul.tab::-webkit-scrollbar-track {
+    background-color: #000;
+    border: 3px solid #aaa;
+    background-color: #000;
+}
+ul.tab::-webkit-scrollbar {
+    width: 5px;
+}
+.toplevel_page_add-functions-php,
+.add-functions-php_page_sidebar-menu-customizer {
+    #additional_code {
+        textarea {
+            width: 650px;
+        }
+    }
+
+    // .area {
+    //     display: none; /* 最初は全てのタブコンテンツを隠す */
+    // }
+	.page-functions-wrapper{
+	max-width: 1200px;
+	@include fw.mq(lg,max){
+		max-width: 800px;
+	}
+}
+    /*tabの形状*/
+    ul.tab {
+        display: flex;
+        flex-wrap: wrap;
+width: 100%;
+        margin-bottom: 0;
+        z-index: 999;
+        position: relative;
+			@include fw.mq(lg,max){
+		flex-wrap: nowrap;
+		white-space: nowrap;
+		overflow: auto;
+
+	}
+        li {
+            margin-bottom: 0;
+            transition: transform 0.2s;
+
+            &.active {
+                border-top: solid 2px #2271b1;
+                border-left: solid 2px #2271b1;
+                border-right: solid 2px #2271b1;
+                border-bottom: white;
+
+                a {
+                    font-weight: bold;
+                    background: white;
+                    color: #2271b1;
+                }
+            }
+            a {
+                display: block;
+                background: #ddd;
+                padding: 10px 20px;
+                text-decoration: none;
+                margin-left: 0;
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+    /*liにactiveクラスがついた時の形状*/
+
+    /*エリアの表示非表示と形状*/
+    .area {
+        display: none; /*はじめは非表示*/
+        // opacity: 0; /*透過0*/
+        background: #fff;
+        padding: 2rem;
+        margin-top: -2px;
+        border-top: solid 2px #2271b1;
+        &.active {
+            display: block !important; /*表示*/
+            // animation-name: displayAnime; /*ふわっと表示させるためのアニメーション*/
+            // animation-duration: 0.5s;
+            // animation-fill-mode: forwards;
+        }
+    }
+
+    .area.is-active {
+        display: block; /* アクティブなタブのコンテンツだけを表示 */
+    }
+}
+/*tabの形状*/
+ul.tab {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    z-index: 999;
+    position: relative;
+    li {
+        margin-bottom: 0;
+        transition: transform 0.2s;
+
+        &.active {
+            border-top: solid 2px #2271b1;
+            border-left: solid 2px #2271b1;
+            border-right: solid 2px #2271b1;
+            border-bottom: white;
+
+            a {
+                font-weight: bold;
+                background: white;
+                color: #2271b1;
+            }
+        }
+        a {
+            display: block;
+            background: #ddd;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin-left: 0;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}
+/*liにactiveクラスがついた時の形状*/
+
+/*エリアの表示非表示と形状*/
+.area {
+    display: none; /*はじめは非表示*/
+    // opacity: 0; /*透過0*/
+    background: #fff;
+    padding: 2rem;
+    margin-top: -2px;
+    border-top: solid 2px #2271b1;
+    &.active {
+        display: block !important; /*表示*/
+        // animation-name: displayAnime; /*ふわっと表示させるためのアニメーション*/
+        // animation-duration: 0.5s;
+        // animation-fill-mode: forwards;
+    }
+}
+
+.area.is-active {
+    display: block; /* アクティブなタブのコンテンツだけを表示 */
+}
+// #widgets_dashboard .widgets_wrapper .widget_container{
+// 	&:nth-of-type(2n-1){
+//     background: aliceblue !important;
+// 	}
+// }

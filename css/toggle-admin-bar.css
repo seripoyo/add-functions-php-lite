@@ -1,0 +1,11 @@
+#toggle-admin-bar {
+    padding: 10px 20px;
+    background-color: #0073aa;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+html,#wpadminbar {
+	transition: all 0.5s;
+}

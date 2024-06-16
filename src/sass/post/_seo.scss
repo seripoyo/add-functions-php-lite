@@ -1,0 +1,32 @@
+@use "../setting/forwards" as fw;
+
+// =================================================
+// 投稿ページでのSEO対策機能
+// =================================================
+#seo_setting {
+    #title_input,
+    #keyword_input,
+    #description_input {
+        width: 100%;
+    }
+    .postbox-header {
+        background: #ececec;
+    }
+    p {
+        padding: 0.3rem 0;
+        padding-left: 0.5rem;
+        border-left: 6px double #000;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+}
+div#description_display {
+    padding: 1rem;
+    /* border: 1px solid; */
+    border: 1px solid #8c8f94;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+div#description_length {
+    margin-top: 10px;
+}

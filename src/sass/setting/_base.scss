@@ -1,0 +1,81 @@
+@use "./forwards" as fw;
+
+.pc_hidden {
+	@include fw.mq(lg, max) {
+		// (min-width: 960px)",
+		display: none !important;
+	}
+}
+
+.md_hidden {
+	@include fw.mq(md, max) {
+		// (max-width: 959px)
+
+		display: none !important;
+	}
+}
+.tb_hidden {
+	@include fw.mq(ssm, md) {
+		// (min-width:520px) and (max-width: 959px)",
+		display: none;
+	}
+	@include fw.mq(lg, min) {
+		// (min-width:520px) and (max-width: 959px)",
+		display: block;
+	}
+	@include fw.mq(lg, min) {
+		// (min-width:520px) and (max-width: 959px)",
+		display: block;
+	}
+}
+
+.ssm_hidden {
+	@include fw.mq(sm, min) {
+		// (min-width: 520px)",
+		display: none;
+	}
+}
+.sm_hidden {
+	@include fw.mq(sm, max) {
+		// (max-width: 519px)",
+		display: none !important;
+	}
+}
+.min {
+	font-family: "min";
+}
+// body {
+//     background: rgb(233 240 235 / 85%);
+// }
+// p {
+//     color: #13452c;
+//     font-size: 18px;
+//     @include fw.mq(sm, max) {
+//         font-size: 16.5px;
+//     }
+// }
+// .en h2 {
+//     font-family: "en" !important;
+//     font-weight: 100;
+//     letter-spacing: 4px;
+//     font-size: 26px;
+//     &:first-letter {
+//         color: fw.$sub;
+//         font-size: 30px;
+//     }
+// }
+[role="treeitem"] span[aria-hidden] {
+	font-family: dashicons !important;
+}
+[class*=" icon-"].dashicons-before:before {
+	font-family: dashicons !important;
+}
+#toplevel_page_swell_settings .menu-top .wp-menu-image:before {
+	font-family: icomoon !important;
+}
+span#icon_preview_edit\.php\?post_type\=page.dashicons-admin-post::before,#menu-pages a.wp-has-submenu.menu-top.menu-icon-page .wp-menu-image.dashicons-before.dashicons-admin-post::before{
+    content: "\f105" !important;
+}
+#adminmenu a[href="edit.php?post_type=page"].wp-has-submenu.wp-not-current-submenu.menu-top.menu-icon-page .wp-menu-image.dashicons-before.dashicons-admin-post::before{
+    content: "\f105" !important;
+}

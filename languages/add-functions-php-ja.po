@@ -1,0 +1,905 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Add functions PHP\n"
+"POT-Creation-Date: 2024-05-26 11:59+0900\n"
+"PO-Revision-Date: 2024-05-26 11:59+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: add-functions-php-lite.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: assets\n"
+"X-Poedit-SearchPath-2: class\n"
+"X-Poedit-SearchPath-3: css\n"
+"X-Poedit-SearchPath-4: inc\n"
+"X-Poedit-SearchPath-5: languages\n"
+"X-Poedit-SearchPath-6: node_modules\n"
+"X-Poedit-SearchPath-7: src\n"
+"X-Poedit-SearchPath-8: update\n"
+"X-Poedit-SearchPath-9: .stylelintrc\n"
+"X-Poedit-SearchPath-10: add-functions-php-lite.php\n"
+"X-Poedit-SearchPath-11: package.json\n"
+"X-Poedit-SearchPath-12: package-lock.json\n"
+
+#: add-functions-php-lite.php:132
+msgid "The Lite version was disabled because the paid version was installed."
+msgstr "有料版がインストールされたため、Lite版を無効化しました。"
+
+#: class/class-admin-menu.php:30 class/class-admin-menu.php:31
+msgid "Admin Menu Adjustment"
+msgstr "管理画面メニュー調整"
+
+#: class/class-admin-menu.php:44
+msgid "You do not have permission to access this page."
+msgstr "このページにアクセスする権限がありません."
+
+#: class/class-functions.php:105 class/class-functions.php:106
+msgid "Add functions PHP"
+msgstr "Add functions PHP"
+
+#: class/class-functions.php:116 class/class-functions.php:117
+msgid "Extensions"
+msgstr "拡張機能"
+
+#: inc\enqueue-assets.php:164
+msgid "Cache deletion succeeded! Reload the screen."
+msgstr "キャッシュ削除に成功しました！画面をリロードします。"
+
+#: inc\enqueue-assets.php:128
+msgid "Delete cache"
+msgstr "キャッシュを削除"
+
+#: class/class-functions.php:151
+msgid "Admin Panel Background Color"
+msgstr "管理画面背景カラー"
+
+#: class/class-functions.php:152
+msgid "Admin Panel Text Color"
+msgstr "管理画面のテキストカラー"
+
+#: class/class-functions.php:153
+msgid "Admin Panel Menu Background Color"
+msgstr "管理画面メニューの背景カラー"
+
+#: class/class-functions.php:154
+msgid "Admin Panel Submenu Background Color"
+msgstr "管理パネルのサブメニューの背景色"
+
+#: class/class-functions.php:155
+msgid "Admin Panel Menu Text Color"
+msgstr "管理画面メニューのテキストカラー"
+
+#: class/class-posts.php:88 class/class-posts.php:89 inc/page-posts.php:45
+msgid "Post-related extensions"
+msgstr "投稿関連の拡張機能"
+
+#: class/class-posts.php:97 class/class-posts.php:98 update/AFP_plugin.php:146
+msgid "Plugin License"
+msgstr "PRO版プラグイン"
+
+#: class/functions-modules/appearance.php:141
+msgid "default"
+msgstr "デフォルト"
+
+#: class/functions-modules/appearance.php:142
+msgid "Noto Sans：sample"
+msgstr "Noto Sans JP：サンプル"
+
+#: class/functions-modules/appearance.php:143
+msgid "Noto Serif JP：sample"
+msgstr "Noto Serif JP：サンプル"
+
+#: class/functions-modules/appearance.php:144
+msgid "Rounded M+ 1p：sample"
+msgstr "Rounded M+ 1p：サンプル"
+
+#: class/functions-modules/appearance.php:145
+msgid "logo type gothic：sample"
+msgstr "ロゴたいぷゴシック：サンプル"
+
+#: class/functions-modules/list.php:11
+msgid "Remove EditURI"
+msgstr "EditURIを削除する"
+
+#: class/functions-modules/list.php:12
+msgid "Hide Shortened URL"
+msgstr "短縮URLを非表示にする"
+
+#: class/functions-modules/list.php:13
+msgid "Do not output rel=\"prev/next\""
+msgstr "rel=\"prev/next\" を出力しない"
+
+#: add-functions-php-trial.php:132
+msgid "The Lite version was disabled because the Trial version was installed."
+msgstr "体験版がインストールされたため、Lite版を無効化しました。"
+
+#: class/functions-modules/list.php:14
+msgid "Turn off the feed function"
+msgstr "フィード機能をオフにする"
+
+#: class/functions-modules/list.php:15
+msgid "Hide Comments Feed"
+msgstr "コメントフィードを非表示にする"
+
+#: class/functions-modules/list.php:16
+msgid "Remove Emoji CSS/Script"
+msgstr "絵文字CSS/スクリプトを削除する"
+
+#: class/functions-modules/list.php:17
+msgid "Remove link rel=\"wlwmanifest\""
+msgstr "link rel=\"wlwmanifest\"を削除する"
+
+#: class/functions-modules/list.php:18
+msgid "Remove WordPress Version Information in head"
+msgstr "head内のWordpressバージョン情報を削除する"
+
+#: class/functions-modules/list.php:19
+msgid "Disable Self-Pingback (Automatic Reciprocal Link)"
+msgstr "セルフピンバック（自動相互リンク）を無効化する"
+
+#: class/functions-modules/list.php:20
+msgid "Stop WordPress standard sitemap output"
+msgstr "WordPressの標準サイトマップ出力を停止する"
+
+#: class/functions-modules/list.php:21
+msgid "Do not output link tags for REST API"
+msgstr "REST APIのリンクタグを出力しない"
+
+#: class/functions-modules/list.php:22
+msgid "Stop outputting “srcset” inside <img>"
+msgstr "<img>内部への\"srcset\" の出力を停止する"
+
+#: class/functions-modules/list.php:27
+msgid "Disable Author Archive"
+msgstr "投稿者アーカイブを無効にする"
+
+#: class/functions-modules/list.php:28
+msgid "Disable REST API to check user name"
+msgstr "REST APIでユーザー名を確認できないようにする"
+
+#: class/functions-modules/list.php:29
+msgid "Change Login Error Message"
+msgstr "ログインエラーメッセージを変更する"
+
+#: class/functions-modules/list.php:30
+msgid "Limit Login Attempts to 3"
+msgstr "ログイン試行回数を 3 回に制限する"
+
+#: class/functions-modules/list.php:31
+msgid "Block Logins from Outside Japan"
+msgstr "日本国外からのログインをブロックする"
+
+#: class/functions-modules/list.php:32
+msgid "Block Comments from Outside Japan"
+msgstr "日本国外からのコメントをブロックする"
+
+#: class/functions-modules/list.php:38
+msgid "Do not load jQuery Migrate"
+msgstr "jQuery Migrateを読み込まない"
+
+#: class/functions-modules/list.php:39
+msgid "Add defer to jQuery <script> tag"
+msgstr "JQueryの<script>タグにdeferを付与する"
+
+#: class/functions-modules/list.php:40
+msgid "Add async to jQuery <script> tag"
+msgstr "JQueryの<script>タグにasyncを付与する"
+
+#: class/functions-modules/list.php:41
+msgid "Load Official WordPress jQuery via Google CDN in <head>"
+msgstr "WordPress純正jQueryをGoogle CDNに変更して<head>内部で読み込む"
+
+#: class/functions-modules/list.php:42
+msgid "Load Official WordPress jQuery via Google CDN just before </body>"
+msgstr "WordPress純正jQueryをGoogle CDNに変更して</body>直前で読み込む"
+
+#: class/functions-modules/list.php:44
+msgid ""
+"Delay img loading using loading=\"lazy\" (Not recommended to use with the "
+"following)"
+msgstr "imgにloading=\"lazy”で画像の読み込みを遅らせる(以下と併用は非推奨)"
+
+#: class/functions-modules/list.php:45
+msgid "Lazy-load img, video, and iframe using lazysizes.js"
+msgstr "lazysizes.jsでimg, video, iframeを遅延読み込み"
+
+#: class/functions-modules/list.php:48
+msgid "Set Enable Keep-Alive"
+msgstr "Enable Keep-Alive を設定する"
+
+#: class/functions-modules/list.php:49
+msgid "Cache Images and Fonts"
+msgstr "画像とフォントをキャッシュする"
+
+#: class/functions-modules/list.php:50
+msgid "Set Browser Cache"
+msgstr "ブラウザのキャッシュを設定する"
+
+#: class/functions-modules/list.php:51
+msgid "Prioritize serving .webp files with the same filename"
+msgstr "同じファイル名でも.webpを優先的に配信する"
+
+#: class/functions-modules/list.php:52
+msgid "Ignore ETags (Configure entity tags)"
+msgstr "ETags(Configure entity tags) を無視する"
+
+#: class/functions-modules/list.php:53
+msgid "Compress HTML, CSS, JavaScript, Text, and XML"
+msgstr "HTML, CSS, JavaScript, Text, XMLを圧縮する"
+
+#: class/functions-modules/list.php:58
+msgid "Output OGP Meta Tag with this Plugin"
+msgstr "このプラグインでOGPメタタグを出力する"
+
+#: class/functions-modules/list.php:59
+msgid "Set Tag/Category Description to Respective Descriptions"
+msgstr "タグ・カテゴリーの説明を各ディスクリプションに設定する"
+
+#: class/functions-modules/list.php:60
+msgid "Set Featured Image as OGP Image"
+msgstr "アイキャッチをOGP画像に設定する"
+
+#: class/functions-modules/list.php:61
+msgid "Output Twitter(X) Share Meta Tag with this Plugin"
+msgstr "このプラグインでTwitter(X)シェア用メタタグを出力する"
+
+#: class/functions-modules/list.php:66
+msgid "Automatically Remove Empty p Tags"
+msgstr "空の p タグを自動的に削除する"
+
+#: class/functions-modules/list.php:67
+msgid "Switch to Maintenance Mode"
+msgstr "メンテナンスモードに切り替える"
+
+#: class/functions-modules/list.php:68
+msgid "Load Font Awesome (Version 6)"
+msgstr "Font Awesome(バージョン6)を読み込む"
+
+#: class/functions-modules/list.php:69
+msgid "Allow SVG Image Uploads"
+msgstr "SVG画像をアップロードできるようにする"
+
+#: class/functions-modules/list.php:70
+msgid "Allow PDF File Uploads"
+msgstr "PDFファイルをアップロードできるようにする"
+
+#: class/functions-modules/list.php:71
+msgid "Display Template File Name in Admin Bar"
+msgstr "テンプレートファイル名を管理バーに出力する"
+
+#: class/functions-modules/list.php:72
+msgid "Hide Update Notifications Except for Specific Users"
+msgstr "特定のユーザー以外の更新通知を非表示にする"
+
+#: class/functions-modules/list.php:73
+msgid "Enable Major WordPress Auto Update"
+msgstr "WordPressのメジャーアップデートを自動更新にする"
+
+#: class/functions-modules/list.php:74
+msgid "Enable Plugin, WordPress, and Theme Auto Updates"
+msgstr "プラグイン・テーマの自動更新を有効にする"
+
+#: class/functions-modules/list.php:75
+msgid "Do Not Force Resize When Uploading Large Images"
+msgstr "大きな画像をアップする時に強制縮小させないようにする"
+
+#: class/functions-modules/list.php:76
+msgid "Add Slug to body (or #body_wrap) Class"
+msgstr "ページスラッグをbodyのclassに追加する"
+
+#: class/functions-modules/list.php:77
+msgid "Add Browser Name to body (or #body_wrap) Class"
+msgstr "ブラウザ名をbodyのclassに追加する"
+
+#: class/functions-modules/list.php:78
+msgid "Hide all default dashboard widgets"
+msgstr "デフォルトのダッシュボードウィジェットをすべて非表示にする"
+
+#: class/functions-modules/list.php:79
+msgid "Redirect to Page if Only One Search Result"
+msgstr "検索結果が1件しかない場合はそのページにリダイレクトさせる"
+
+#: class/functions-modules/list.php:80
+msgid "Output button to show/hide adminbar on frontend"
+msgstr "フロントエンドでadminbarを表示/非表示を切り替えるボタンを出力する"
+
+#: class/posts-modules/extension.php:46
+msgid "Eyecatch Image"
+msgstr "アイキャッチ画像"
+
+#: class/posts-modules/list.php:8
+msgid "Add a button to duplicate each post"
+msgstr "各投稿を複製するボタンの追加"
+
+#: class/posts-modules/list.php:9
+msgid "Display the post ID on each post list page"
+msgstr "各投稿一覧ページに投稿IDを出力する"
+
+#: class/posts-modules/list.php:10
+msgid "Display the last updated date on each post list page"
+msgstr "各投稿の一覧ページに最終更新日時を出力する"
+
+#: class/posts-modules/list.php:11
+msgid "Display the featured image on each post list page"
+msgstr "各投稿一覧ページにアイキャッチ画像を出力する"
+
+#: class/posts-modules/list.php:12
+msgid "Display the tag list as checkboxes on the post editing screen"
+msgstr "投稿画面のタグ一覧をチェックボックスで表示する"
+
+#: class/posts-modules/list.php:13
+msgid "Output SEO settings input fields on the page/post editing screen"
+msgstr "ページ・投稿の編集画面にSEO設定の入力欄を出力する"
+
+#: class/posts-modules/list.php:14
+msgid "Automatically add the image file name to the title and ALT of images"
+msgstr "画像に自動でタイトルとALTに画像ファイル名を追加する"
+
+#: class/posts-modules/list.php:15
+msgid "Automatically change the slug to id when the slug is in Japanese"
+msgstr "スラッグが日本語の時、自動的にスラッグをidに変更する"
+
+#: class/posts-modules/list.php:16
+msgid ""
+"Insert the data title into the ALT where ALT is empty for data already added"
+msgstr "既に追加されているデータでALTが空の場合は全てデータタイトルをALTに挿入"
+
+#: class/posts-modules/post-setting.php:23
+msgid "投稿"
+msgstr "投稿"
+
+#: inc/functions-template/additional-code.php:1
+msgid "Code to be added to &lt;head&gt;"
+msgstr "&lt;head&gt; タグ内に追加したいコード"
+
+#: inc/functions-template/additional-code.php:3
+msgid "Code to be added immediately after the start of &lt;body&gt;"
+msgstr "&lt;body&gt; タグ開始後に追加したいコード"
+
+#: inc/functions-template/additional-code.php:5
+msgid "Code to be added before the end of &lt;body&gt;."
+msgstr "&lt;body&gt; タグ終了前に追加したいコード"
+
+#: inc/functions-template/appearance.php:3
+msgid "Font setting in the admin"
+msgstr "管理画面のフォント設定"
+
+#: inc/functions-template/appearance.php:28
+msgid "Admin Bar/Side Menu Color Settings"
+msgstr "管理バー/サイドメニューの色設定"
+
+#: inc/functions-template/appearance.php:32
+msgid "Menu Background Color"
+msgstr "メニュー背景色"
+
+#: inc/functions-template/appearance.php:39
+msgid "Menu Text Color"
+msgstr "メニューテキストの色"
+
+#: inc/functions-template/ogp-setting.php:25
+msgid "OGP image to output when eye-catching is not set"
+msgstr "アイキャッチが設定されていない時に出力するOGP画像"
+
+#: inc/functions-template/ogp-setting.php:30
+msgid "Upload Image"
+msgstr "画像をアップロードする"
+
+#: inc/functions-template/ogp-setting.php:31
+msgid "Delete image"
+msgstr "画像を削除する"
+
+#: inc/functions-template/ogp-setting.php:35
+msgid "Twitter Card Settings"
+msgstr "Twitter カード設定"
+
+#: inc/functions-template/ogp-setting.php:55
+msgid "Twitter (X) account ID"
+msgstr "Twitter(X)アカウントID"
+
+#: inc/functions-template/ogp-setting.php:57
+msgid "Please fill in your ID without the @"
+msgstr "@を抜いたIDを記入してください"
+
+#: inc/functions-template/ogp-setting.php:62
+msgid "Card type you want to use"
+msgstr "使用したいカードの種類"
+
+#: inc/functions-template/ogp-setting.php:66
+msgid "summary_large_image (Displays featured image larger)"
+msgstr "summary_large_image (アイキャッチ画像を拡大して表示)"
+
+#: inc/functions-template/ogp-setting.php:67
+msgid "summary (Displays featured image smaller)"
+msgstr "summary (アイキャッチ画像を小さく表示)"
+
+#: inc/functions-template/security.php:33
+msgid ""
+"Change the domain name /wp-content/uploads/{file name} and the URL of the "
+"output media library"
+msgstr ""
+"ドメイン名/wp-content/uploads/{ファイル名}と出力されるメディアライブラリのURL"
+"を変更する"
+
+#: inc/functions-template/security.php:35
+msgid ""
+"Enter the domain name/{name of the folder you want} followed by the folder "
+"name"
+msgstr "ドメイン名/{指定したいフォルダ名}と続くフォルダ名を入力する"
+
+#: inc/functions-template/security.php:38
+msgid "Media library URL after configuration："
+msgstr "構成後のメディアライブラリURL:："
+
+#: inc/functions-template/security.php:41
+msgid ""
+"If you wish to change the login page URL, please enter any string below."
+msgstr ""
+"ログインページURLを変更したい場合は以下に任意の文字列を記入してください。"
+
+#: inc/functions-template/security.php:42
+msgid "recommendation："
+msgstr "おすすめ："
+
+#: inc/functions-template/security.php:44
+msgid "Enter the string that follows “login.php?\""
+msgstr "login.php?の後に続く文字列を入力する"
+
+#: inc/functions-template/security.php:48
+msgid "The URL of the login page after setup："
+msgstr "設定後のログインページURL："
+
+#: inc/functions-template/security.php:52
+msgid ""
+"If you wish to apply BASIC authentication to the entire site, please enter "
+"your ID and password below."
+msgstr ""
+"サイト全体にBASIC認証を掛けたい時は以下にIDとパスワードを入力してください。"
+
+#: inc/functions-template/security.php:54
+msgid "Enter user ID for BASIC authentication"
+msgstr "BASIC認証時のユーザーIDを入力する"
+
+#: inc/functions-template/security.php:58
+msgid "Enter the password for BASIC authentication"
+msgstr "BASIC認証時のパスワードを入力する"
+
+#: inc/functions-template/widgets-dashboard.php:16
+msgid "Widget outline to be created"
+msgstr "作成するウィジェット大枠"
+
+#: inc/functions-template/widgets-dashboard.php:20
+msgid "Enter a name for the widget surrounding the button"
+msgstr "ボタンを囲うウィジェットに付ける名前を入力してください"
+
+#: inc/functions-template/widgets-dashboard.php:58
+msgid "Button settings for widgets"
+msgstr "ウィジェットのボタン設定"
+
+#: inc/functions-template/widgets-dashboard.php:61
+msgid "Enter the label of the button you want to add to the widget"
+msgstr "ウィジェットに追加するボタンのラベルを入力してください"
+
+#: inc/functions-template/widgets-dashboard.php:67
+msgid "Please enter the URL to which you want the button to link"
+msgstr "ボタンのリンク先にするURLを入力してください"
+
+#: inc/functions-template/widgets-dashboard.php:81 inc/page-admin-menu.php:120
+msgid "Select Icon"
+msgstr "アイコンを選択する"
+
+#: inc/functions-template/widgets-dashboard.php:89
+msgid "Delete button"
+msgstr "ボタンを削除する"
+
+#: inc/functions-template/widgets-dashboard.php:94
+msgid "Add a button"
+msgstr "ボタンを追加する"
+
+#: inc/functions-template/widgets-dashboard.php:97
+msgid "Delete a widget"
+msgstr "ウィジェットの削除"
+
+#: inc/functions-template/widgets-dashboard.php:104
+msgid "Add a widget"
+msgstr "ウィジェットを追加する"
+
+#: inc/functions-template/widgets-dashboard.php:136 inc/page-admin-menu.php:155
+msgid "Restore default settings"
+msgstr "初期アイコンに戻す"
+
+#: inc/page-admin-menu.php:64
+msgid "side menu"
+msgstr "サイドメニュー"
+
+#: inc/page-admin-menu.php:65
+msgid "Administrators only"
+msgstr "管理者のみ"
+
+#: inc/page-admin-menu.php:69
+msgid "Text to be displayed in sidebar"
+msgstr "サイドバーに表示するテキスト"
+
+#: inc/page-admin-menu.php:76
+msgid "Comments"
+msgstr "コメント"
+
+#: inc/page-admin-menu.php:79
+msgid "Plugins"
+msgstr "プラグイン"
+
+#: inc/page-admin-menu.php:131 inc/page-functions.php:73 inc/page-posts.php:90
+msgid "Save settings"
+msgstr "設定を保存する"
+
+#: inc/page-functions.php:12
+msgid "added to functions.php"
+msgstr "Add functions PHP"
+
+#: inc/page-functions.php:17
+msgid " &lt;head&gt; tag"
+msgstr " &lt;head&gt;タグ"
+
+#: inc/page-functions.php:20
+msgid "Security measures"
+msgstr "セキュリティ対策"
+
+#: inc/page-functions.php:23
+msgid "extensions"
+msgstr "拡張機能"
+
+#: inc/page-functions.php:26
+msgid "SEO and Accelerate"
+msgstr "SEO対策・高速化"
+
+#: inc/page-functions.php:29
+msgid "OGP Settings"
+msgstr "OGP設定"
+
+#: inc/page-functions.php:32
+msgid "Adding a code"
+msgstr "コードの追加"
+
+#: inc/page-functions.php:35
+msgid "Adding a dashboard widget"
+msgstr "ダッシュボードウィジェットの追加"
+
+#: inc/page-functions.php:38
+msgid "Appearance of the Admin screen"
+msgstr "管理画面の見た目設定"
+
+#: inc/page-posts.php:42
+msgid "This feature is only available in the paid version"
+msgstr "この機能は有料版でのみご利用いただけます。"
+
+#: inc/page-posts.php:50
+msgid "post"
+msgstr "投稿"
+
+#: inc/page-posts.php:68
+msgid "Setup screen"
+msgstr "設定画面"
+
+#: inc/posts-templates/commons-setting.php:2
+msgid "Maximum number of archive page displays"
+msgstr "アーカイブページの最大表示数"
+
+#: inc/posts-templates/commons-setting.php:13
+msgid "Max Revision Count"
+msgstr "最大リビジョン数"
+
+#: inc/posts-templates/post-setting.php:2
+msgid "archive slug"
+msgstr "アーカイブスラッグ"
+
+#: inc/posts-templates/post-setting.php:5
+msgid "(e.g., archive, etc.)"
+msgstr "（例）archiveなど"
+
+#: inc/posts-templates/post-setting.php:11
+msgid "Archive labels: Labels that are treated the same as \"post\""
+msgstr "アーカイブラベル：「投稿」と同じ扱いをされるラベル"
+
+#: inc/posts-templates/post-setting.php:13
+msgid "(e.g., blogs, columns, etc.)"
+msgstr "（例）ブログ、コラムなど"
+
+#: inc/posts-templates/post-setting.php:19
+msgid "Meta description for archive page"
+msgstr "アーカイブページのメタディスクリプション"
+
+#: inc/posts-templates/post-setting.php:28
+msgid "Maximum number of category archive pages"
+msgstr "カテゴリーアーカイブページの最大表示数"
+
+#: inc/posts-templates/post-setting.php:38
+msgid "Archive page display order"
+msgstr "アーカイブページ表示順"
+
+#: inc/posts-templates/post-setting.php:42
+msgid "ascending-order"
+msgstr "昇順"
+
+#: inc/posts-templates/post-setting.php:43
+msgid "descending-order"
+msgstr "降順"
+
+#: inc/posts-templates/post-setting.php:47
+msgid "Ascending or Descending"
+msgstr "昇順・降順"
+
+#: inc/posts-templates/post-setting.php:53
+msgid "none"
+msgstr "順序無し"
+
+#: inc/posts-templates/post-setting.php:54
+msgid "Order by Post ID"
+msgstr "投稿ID順"
+
+#: inc/posts-templates/post-setting.php:55
+msgid "Order by Author"
+msgstr "作成者順"
+
+#: inc/posts-templates/post-setting.php:56
+msgid "Order by title"
+msgstr "タイトル順"
+
+#: inc/posts-templates/post-setting.php:57
+msgid "Order by Date"
+msgstr "日付順"
+
+#: inc/posts-templates/post-setting.php:58
+msgid "Order by Date Updated"
+msgstr "更新日順"
+
+#: inc/posts-templates/post-setting.php:59
+msgid "Order by Parent ID order"
+msgstr "親ページID順"
+
+#: inc/posts-templates/post-setting.php:60
+msgid "Random"
+msgstr "ランダム"
+
+#: inc/posts-templates/post-setting.php:61
+msgid "Order by number of comments"
+msgstr "コメント数順"
+
+#: inc/posts-templates/post-setting.php:65
+msgid "sort order"
+msgstr "並び順"
+
+#: inc/posts-templates/post-setting.php:71
+msgid "Maximum number of Tag pages"
+msgstr "タグページ最大表示数"
+
+#: inc/posts-templates/taxonomy-setting.php:2
+msgid "Maximum number of archive pages"
+msgstr "アーカイブページ最大表示数"
+
+#: inc/posts-templates/taxonomy-setting.php:10
+msgid "Add taxonomy term to URL"
+msgstr "タクソノミーのタームをURLに追加"
+
+#. translators: the plugin name.
+#: update/AFP_Plugin_Updater.php:299
+#, php-format
+msgid "There is a new version of %1$s available."
+msgstr "利用可能な %1$s の新しいバージョンがあります。"
+
+#: update/AFP_Plugin_Updater.php:305
+msgid "Contact your network administrator to install the update."
+msgstr "ネットワーク管理者に連絡して、更新ファイルをインストールしてください。"
+
+#. translators: 1. opening anchor tag, do not translate 2. the new plugin version 3. closing anchor tag, do not translate.
+#: update/AFP_Plugin_Updater.php:310
+#, php-format
+msgid "%1$sView version %2$s details%3$s."
+msgstr "%1$sバージョン %2$s の詳細%3$s.を表示します。"
+
+#: update/AFP_Plugin_Updater.php:318
+#, php-format
+msgid "%1$sView version %2$s details%3$s or %4$supdate now%5$s."
+msgstr ""
+"%1$sバージョン%2$s の詳細を表示するか%3$s%4$s今すぐ更新%5$sしてください。"
+
+#: update/AFP_Plugin_Updater.php:329
+msgid "Update now."
+msgstr "今すぐアップデートする."
+
+#: update/AFP_Plugin_Updater.php:560
+msgid "You do not have permission to install plugin updates"
+msgstr "このページにアクセスする権限がありません"
+
+#: update/AFP_Plugin_Updater.php:560
+msgid "Error"
+msgstr "エラー"
+
+#: update/AFP_plugin.php:152
+msgid "License Key"
+msgstr "ライセンスキー"
+
+#: update/AFP_plugin.php:159
+msgid "Plugin License Options"
+msgstr "プラグインライセンスオプション"
+
+#: update/AFP_plugin.php:191
+msgid "Enter your license key."
+msgstr "ここにライセンスキーを入力してください。"
+
+#: update/AFP_plugin.php:199
+msgid "Deactivate License"
+msgstr "ライセンスの認証を解除する"
+
+#: update/AFP_plugin.php:204
+msgid "Activate License"
+msgstr "ライセンスを認証する"
+
+#: update/AFP_plugin.php:297 update/AFP_plugin.php:339
+#: update/AFP_plugin.php:422
+msgid "An error occurred, please try again."
+msgstr "エラーが発生しました。後でもう一度やり直してください。"
+
+#. translators: the license key expiration date
+#: update/AFP_plugin.php:310
+#, php-format
+msgid "Your license key expired on %s."
+msgstr "ライセンスキーが%sで期限切れになりました。"
+
+#: update/AFP_plugin.php:317
+msgid "Your license key has been disabled."
+msgstr "お持ちのライセンスキーは無効化されました。"
+
+#: update/AFP_plugin.php:321
+msgid "Invalid license."
+msgstr "ライセンスが無効です。"
+
+#: update/AFP_plugin.php:326
+msgid "Your license is not active for this URL."
+msgstr "あなたのライセンスはこのURLに対して有効ではありません."
+
+#. translators: the plugin name
+#: update/AFP_plugin.php:331
+#, php-format
+msgid "This appears to be an invalid license key for %s."
+msgstr "これは、%s の無効なライセンスキーのようです。"
+
+#: update/AFP_plugin.php:335
+msgid "Your license key has reached its activation limit."
+msgstr "ライセンスキーがライセンス認証制限に達しました."
+
+#: update/AFP_plugin.php:717
+msgid "Menu Display Settings"
+msgstr "メニュー表示設定"
+
+#. Plugin Name of the plugin/theme
+msgid "Add functions PHP PRO"
+msgstr "Add functions PHP PRO"
+
+#. Plugin URI of the plugin/theme
+msgid "https://seripoyo.work/add-functions/"
+msgstr "https://seripoyo.work/add-functions/"
+
+#. Description of the plugin/theme
+msgid ""
+"This is a Japanese plugin to customize WordPress without editing functions."
+"php directly."
+msgstr ""
+"functions.phpを直接編集せずにWordPressをカスタマイズする日本製プラグインで"
+"す。"
+#: inc/functions-template/appearance.php:3
+msgid "Font settings in the admin"
+msgstr "管理画面のフォント設定"
+#. Author of the plugin/theme
+msgid "せりぽよ"
+msgstr "せりぽよ"
+
+#. Author URI of the plugin/theme
+msgid "https://seripoyo.work/"
+msgstr "https://seripoyo.work/"
+
+#~ msgid "Seripoyo"
+#~ msgstr "せりぽよ"
+
+#~ msgid ""
+#~ "Add the code corresponding to the configured function as functions.php."
+#~ msgstr "設定した機能に対応したコードをfunctions.phpとして追加する。"
+
+#~ msgid "Enter the name for the widget surrounding the button"
+#~ msgstr "ボタンを囲うウィジェットに付ける名前を入力してください"
+
+#~ msgid "This is where you enter your license key."
+#~ msgstr "ここにライセンスキーを入力してください"
+
+#~ msgid "Deny PHP Execution in Media Library URLs"
+#~ msgstr "メディアライブラリのURLでPHPの実行を拒否する"
+
+#~ msgid "Redirect to HTTPS"
+#~ msgstr "HTTPS にリダイレクトする"
+
+#~ msgid "Background Color"
+#~ msgstr "メニュー背景色"
+
+#~ msgid "Creating Widget Outline"
+#~ msgstr "ウィジェットを作成する"
+
+#, fuzzy
+#~ msgid "このページにアクセスする権限がありません。"
+#~ msgstr "このページにアクセスする権限がありません。"
+
+#, fuzzy
+#~ msgid "アイキャッチ画像"
+#~ msgstr "アイキャッチ画像"
+
+#, fuzzy
+#~ msgid "画像をアップロード"
+#~ msgstr "画像をアップロード"
+
+#, fuzzy
+#~ msgid "画像を削除"
+#~ msgstr "画像を削除"
+
+#, fuzzy
+#~ msgid "Twitter(X)アカウントID"
+#~ msgstr "Twitter(X)アカウントID"
+
+#, fuzzy
+#~ msgid "使用するカードタイプ"
+#~ msgstr "使用するカードタイプ"
+
+#~ msgid "指定した機能に対応したfunctions.phpコードを追加する。"
+#~ msgstr "指定した機能に対応したfunctions.phpコードを追加する。"
+
+#~ msgid "widget01"
+#~ msgstr "widget01"
+
+#~ msgid "widget02"
+#~ msgstr "widget02"
+
+#~ msgid "widget03"
+#~ msgstr "widget03"
+
+#~ msgid "Button Settings for Widget"
+#~ msgstr "ウィジェットのボタン設定"
+
+#~ msgid "Enter the label for the button to be added to the widget"
+#~ msgstr "ウィジェットに追加するボタンのラベルを入力してください"
+
+#~ msgid "Enter the URL to be linked by the button"
+#~ msgstr "ボタンのリンク先にするURLを入力してください"
+
+#~ msgid "Remove Button"
+#~ msgstr "ボタンを削除する"
+
+#~ msgid "Add Button"
+#~ msgstr "ボタンを追加する"
+
+#~ msgid "Remove Widget"
+#~ msgstr "ウィジェットを削除する"
+
+#~ msgid "Button settings for the widget"
+#~ msgstr "ウィジェットのボタン設定"
+
+#~ msgid "Enter the URL to link the button to"
+#~ msgstr "ボタンのリンク先にするURLを入力してください"
+
+#~ msgid "Select an icon"
+#~ msgstr "アイコンを選択する"
+
+#~ msgid "Remove button"
+#~ msgstr "ボタンを削除する"
+
+#~ msgid "Widget Wrapper Settings"
+#~ msgstr "ウィジェット全体の設定"
+
+#~ msgid "Enter the name of the widget wrapper"
+#~ msgstr "ボタンを囲うウィジェットに付ける名前を入力してください"

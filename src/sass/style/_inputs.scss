@@ -1,0 +1,484 @@
+@use "../setting/forwards" as fw;
+
+// =================================================
+// font
+// =================================================
+.radio_label.NotoSansJP span {
+	font-family: "Noto Sans JP" !important;
+}
+
+.radio_label.NotoSerifJP span {
+	font-family: "Noto Serif JP" !important;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.KosugiMaru.radio_label span {
+	font-family: "KosugiMaru" !important;
+}
+
+.Rounded_Mplus_1p.radio_label span {
+	font-family: "Rounded_Mplus_1p" !important;
+}
+.logo_type_gothic.radio_label span {
+	font-family: "ロゴたいぷゴシック" !important;
+}
+
+// =================================================
+// input系統
+// =================================================
+.input_items_wrapper {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	align-items: flex-start;
+	.input_item_container {
+		display: grid;
+		grid-template-columns: repeat(4, 200px);
+		gap: 10px;
+		grid-auto-rows: 50px;
+		align-items: center;
+		margin: 1rem 0;
+	}
+}
+// =================================================
+// メニュー名等のテキスト入力欄
+// =================================================
+.txt {
+	position: relative;
+	width: auto;
+	height: auto;
+	margin: 0 auto;
+
+	.label {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		font-size: 14px;
+		color: #a0a0a0;
+		transition: all 0.25s ease;
+
+		&.focus {
+			top: -25px;
+			left: 5px;
+			font-size: 14px;
+			color: black;
+		}
+	}
+
+	input {
+		position: relative;
+		display: block;
+		width: 300px;
+		height: 40px;
+		line-height: 1;
+		padding: 15px 10px;
+		border: none;
+		border-radius: 5px;
+		font-size: 16px;
+		color: #a0a0a0;
+		outline: none;
+		box-shadow:
+			inset 2px 2px 3px 1px #ababab,
+			inset -4px -4px 10px #ffffff;
+		font-size: 14px;
+		color: #323669;
+	}
+}
+
+// =================================================
+// トグルボタン
+// =================================================
+span.toggle__slider.input_pro_slider {
+	display: grid !important;
+	place-content: center;
+	color: white;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+.toggle {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 27px;
+	.toggle__input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+
+		&:checked + .toggle__slider {
+			background: #4bbf5d;
+
+			&:before {
+				transform: translateX(34px);
+			}
+			&:after {
+				content: "ON";
+				opacity: 0.7;
+				font-size: 11px;
+				letter-spacing: 0.5px;
+				color: #fff;
+				position: absolute;
+				left: 9px !important;
+				bottom: 3px;
+				font-weight: 100 !important;
+			}
+		}
+		&:not(:checked) + .toggle__slider {
+			&:after {
+				border-radius: 50%;
+				position: absolute;
+				content: "OFF";
+
+				right: 9px;
+				font-size: 10px;
+				bottom: 3px;
+				color: #777;
+				/* color: red; */
+				-webkit-transition: 0.3s;
+				transition: 0.3s;
+			}
+		}
+
+		&:focus-visible + .toggle__slider {
+			outline: 2px solid;
+		}
+		&.input_pro {
+			&:checked + .toggle__slider {
+				background: #4bbf5d;
+
+				&:after {
+					content: none;
+				}
+			}
+			&:not(:checked) + .toggle__slider {
+				// &:after {
+				// 	border-radius: 50%;
+				// 	position: absolute;
+				// 	content: "PRO";
+				// 	font-weight: bold;
+				// 	right: 18px;
+				// 	font-size: 10px;
+				// 	bottom: 3px;
+				// 	color: white;
+				// 	-webkit-transition: 0.3s;
+				// 	transition: 0.3s;
+				// }
+			}
+
+			&:focus-visible + .toggle__slider {
+				outline: 2px solid;
+			}
+		}
+	}
+	.toggle__slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transition: 0.4s;
+		border-radius: 22px;
+		background-color: #eee;
+		box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2) inset;
+		color: #777;
+		border: solid 1px #ccc;
+		&::before {
+			border-radius: 50%;
+			position: absolute;
+			content: ""; /*何も入れない*/
+			display: inline-block;
+			background-image: url(../../assets/img/sep.webp);
+			background-size: contain;
+			height: 27px;
+			width: 27px;
+			left: 1px;
+			bottom: -2px;
+			transition: 0.3s;
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+		}
+		&.input_pro_slider {
+			background-color: #000000;
+			&:before {
+				content: none !important;
+			}
+		}
+	}
+}
+// =================================================
+// 画像プレビュー
+// =================================================
+
+img#ogp_image_preview {
+	width: 270px;
+}
+/** input/スピンボタンのラップ要素 **/
+.number-spinner-wrap {
+	position: relative;
+	display: block;
+	width: 150px !important;
+	height: 2rem;
+}
+/** デフォルトのスピンボタンを隠す **/
+.number-spinner-wrap input::-webkit-outer-spin-button,
+.number-spinner-wrap input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+/** input要素 **/
+.number-spinner-wrap input {
+	width: 100%;
+	height: 100%;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	text-align: center;
+}
+/** スピンボタン要素 **/
+.number-spinner-wrap .spinner {
+	position: absolute;
+	top: 12px;
+	width: 1.2rem;
+	transform: translate(0, -50%);
+	font-size: 1rem;
+	padding: 2px 0.5rem;
+	text-align: center;
+	background: #abc9ea;
+	cursor: pointer;
+	visibility: visible;
+	user-select: none;
+	height: 23px;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+/** 減算のスピンボタン要素 **/
+.number-spinner-wrap .spinner-down {
+	left: -8px;
+	border-right: 1px solid lightgray;
+	border-radius: 3px 0 0 3px;
+	//   background: #cad1d8;
+}
+/** 加算のスピンボタン要素 **/
+.number-spinner-wrap .spinner-up {
+	right: -10px;
+	border-left: 1px solid lightgray;
+	border-radius: 0 3px 3px 0;
+	background: #eaabac;
+}
+
+// =================================================
+// input　テキスト入力欄
+// =================================================
+.text_input {
+	position: relative;
+	width: 100%;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	display: block;
+	input {
+		padding: 0.5rem 0;
+		width: 100%;
+		outline: 0;
+		border: transparent;
+		border-bottom: 1px solid #cdcdcd;
+		background-color: transparent;
+		color: #495057;
+		font-size: 0.875rem;
+		font-weight: 400;
+		line-height: 1.4rem;
+		box-sizing: border-box;
+		appearance: none;
+		&:focus {
+			box-shadow: none;
+			background: #d2eaf196;
+			/* 下線を表示 */
+		}
+		&:focus + span {
+			width: 100%;
+			bottom: 0;
+			/* 下線を表示 */
+		}
+	}
+	input + span {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 0;
+		/* 下線を隠す */
+		height: 2px;
+		background-color: #2271b1;
+		transition: 0.3s;
+		transform: translateX(-50%);
+	}
+}
+// .text_input input:focus + span{
+// 	bottom: -14px;
+// }
+// =================================================
+// input　テキスト入力欄の確認
+// =================================================
+.warning-message {
+	color: red;
+	font-size: 12px;
+	margin-top: 4px;
+}
+.input-container {
+	margin-bottom: 16px;
+}
+// =================================================
+// プルダウン
+// =================================================
+
+.cp_ipselect {
+	position: relative;
+	width: 90%;
+	margin: 2em auto;
+	text-align: center;
+	display: inline-block;
+	width: 400px;
+}
+.cp_sl06 {
+	&.wp-core-ui select:focus {
+		border: none;
+		box-shadow: none;
+	}
+	position: relative;
+	font-family: inherit;
+	background-color: transparent;
+	width: 100%;
+	padding: 10px 10px 10px 0;
+	font-size: 18px;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	option {
+		border-radius: 0;
+	}
+}
+
+.cp_sl06:focus {
+	outline: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+.cp_ipselect .cp_sl06 {
+	appearance: none;
+	-webkit-appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+	display: none;
+}
+// .cp_ipselect:after {
+// 	position: absolute;
+// 	top: 18px;
+// 	right: 10px;
+// 	width: 0;
+// 	height: 0;
+// 	padding: 0;
+// 	content: "";
+// 	border-left: 6px solid transparent;
+// 	border-right: 6px solid transparent;
+// 	border-top: 6px solid rgba(0, 0, 0, 0.3);
+// 	pointer-events: none;
+// }
+.cp_sl06_selectlabel {
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 0;
+	top: 10px;
+	transition: 0.2s ease all;
+}
+.cp_sl06:focus ~ .cp_sl06_selectlabel,
+.cp_sl06:valid ~ .cp_sl06_selectlabel {
+	color: #2271b1;
+	top: -20px;
+	transition: 0.2s ease all;
+	font-size: 14px;
+}
+.cp_sl06_selectbar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+.cp_sl06_selectbar:before,
+.cp_sl06_selectbar:after {
+	content: "";
+	height: 2px;
+	width: 0;
+	bottom: 1px;
+	position: absolute;
+	background: #2271b1;
+	transition: 0.2s ease all;
+}
+.cp_sl06_selectbar:before {
+	left: 50%;
+}
+.cp_sl06_selectbar:after {
+	right: 50%;
+}
+.cp_sl06:focus ~ .cp_sl06_selectbar:before,
+.cp_sl06:focus ~ .cp_sl06_selectbar:after {
+	width: 50%;
+}
+.cp_sl06_highlight {
+	position: absolute;
+	top: 25%;
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.cp_ipselect select.cp_sl06::-ms-expand {
+	display: none !important;
+}
+select {
+	-webkit-appearance: none;
+	appearance: none; /* デフォルトの矢印を非表示 */
+}
+
+.pro-contents-hidden-container {
+	position: relative;
+	.pro-contents-hidden-inner {
+		&:before {
+			-webkit-backdrop-filter: blur(2px);
+			backdrop-filter: blur(1px);
+			background-color: #a0d8ef99;
+			background-size: 8px 8px;
+			bottom: -2px;
+			box-shadow: 0px 0px 15px 10px #a0d8ef80;
+			content: "";
+			left: -2px;
+			position: absolute;
+			right: -2px;
+			top: -2px;
+			z-index: 99;
+		}
+
+		.pro-contents-hidden-txt {
+			background-color: #000;
+			border-radius: 2em;
+			white-space: nowrap;
+			box-shadow: 0 2px 16px #0003;
+			color: #fff;
+			font-size: 16px;
+			left: 50%;
+			line-height: 1;
+			padding: 0.5em 1em;
+			position: absolute;
+			top: 31%;
+			transform: translateX(-50%) translateY(-50%);
+			z-index: 100;
+			a {
+				color: white;
+			}
+		}
+	}
+}
