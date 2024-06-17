@@ -375,97 +375,107 @@ class AFP_LITE_Plugin_Updater {
 		return array_merge( $active_plugins, array_keys( $active_network_plugins ) );
 	}
 
-	/**
-	 * 関数：plugins_api_filter
-	 * 概要：プラグイン情報ページのデータをカスタマイズ
-	 *
-	 * @param mixed -  $_data: プラグイン情報データ
-	 * @param string - $_action: リクエストされたアクション
-	 * @param object - $_args: リクエストの追加引数
-	 * @return object - カスタマイズされたプラグイン情報データ
-	 **/
-	public function plugins_api_filter( $_data, $_action = '', $_args = null ) {
+/**
+ * 関数：plugins_api_filter
+ * 概要：プラグイン情報ページのデータをカスタマイズ
+ *
+ * @param mixed -  $_data: プラグイン情報データ
+ * @param string - $_action: リクエストされたアクション
+ * @param object - $_args: リクエストの追加引数
+ * @return object - カスタマイズされたプラグイン情報データ
+ **/
+public function plugins_api_filter( $_data, $_action = '', $_args = null ) {
 
-		if ( 'plugin_information' !== $_action ) {
+    if ( 'plugin_information' !== $_action ) {
+        return $_data;
+    }
 
-			return $_data;
+    if ( ! isset( $_args->slug ) || ( $_args->slug !== $this->slug ) ) {
+        return $_data;
+    }
 
-		}
+    // Ensure $_data is an object before assigning properties
+    if ( ! is_object( $_data ) ) {
+        $_data = new stdClass();
+    }
 
-		if ( ! isset( $_args->slug ) || ( $_args->slug !== $this->slug ) ) {
+    if ( ! isset( $_data->plugin ) ) {
+        $_data->plugin = $this->name;
+    }
 
-			return $_data;
+    $to_send = array(
+        'slug'   => $this->slug,
+        'is_ssl' => is_ssl(),
+        'fields' => array(
+            'banners' => array(),
+            'reviews' => false,
+            'icons'   => array(),
+        ),
+    );
 
-		}
-		if ( ! isset( $_data->plugin ) ) {
-			$_data->plugin = $this->name;
-		}
-		$to_send = array(
-			'slug'   => $this->slug,
-			'is_ssl' => is_ssl(),
-			'fields' => array(
-				'banners' => array(),
-				'reviews' => false,
-				'icons'   => array(),
-			),
-		);
+    // Get the transient where we store the api request for this plugin for 24 hours
+    $edd_api_request_transient = $this->get_cached_version_info();
 
-		// Get the transient where we store the api request for this plugin for 24 hours
-		$edd_api_request_transient = $this->get_cached_version_info();
+    // プラグインが無効化されたときにライセンス情報を空にする
+    if ( ! is_plugin_active( 'add-functions-php-lite/add-functions-php-lite.php' ) ) {
+        $_data->sections     = array();
+        $_data->banners      = array();
+        $_data->icons        = array();
+        $_data->contributors = array();
+    }
 
-			// プラグインが無効化されたときにライセンス情報を空にする
-		if ( ! is_plugin_active( 'add-functions-php-lite/add-functions-php-lite.php' ) ) {
-			$_data->sections     = array();
-			$_data->banners      = array();
-			$_data->icons        = array();
-			$_data->contributors = array();
-		}
+    // If we have no transient-saved value, run the API, set a fresh transient with the API value, and return that value too right now.
+    if ( empty( $edd_api_request_transient ) ) {
+        $api_response = $this->api_request( 'plugin_information', $to_send );
 
-		// If we have no transient-saved value, run the API, set a fresh transient with the API value, and return that value too right now.
-		if ( empty( $edd_api_request_transient ) ) {
+        // Expires in 3 hours
+        $this->set_version_info_cache( $api_response );
 
-			$api_response = $this->api_request( 'plugin_information', $to_send );
+        if ( false !== $api_response ) {
+            $_data = $api_response;
+        }
+    } else {
+        $_data = $edd_api_request_transient;
+    }
 
-			// Expires in 3 hours
-			$this->set_version_info_cache( $api_response );
+    // Convert sections into an associative array, since we're getting an object, but Core expects an array.
+    if ( isset( $_data->sections ) && ! is_array( $_data->sections ) ) {
+        $_data->sections = $this->convert_object_to_array( $_data->sections );
+    } else {
+        $_data->sections = array();
+    }
 
-			if ( false !== $api_response ) {
-				$_data = $api_response;
-			}
-		} else {
-			$_data = $edd_api_request_transient;
-		}
+    // Convert banners into an associative array, since we're getting an object, but Core expects an array.
+    if ( isset( $_data->banners ) && ! is_array( $_data->banners ) ) {
+        $_data->banners = $this->convert_object_to_array( $_data->banners );
+    }
 
-		// Convert sections into an associative array, since we're getting an object, but Core expects an array.
-		if ( isset( $_data->sections ) && ! is_array( $_data->sections ) ) {
-			$_data->sections = $this->convert_object_to_array( $_data->sections );
-		}
+    // Convert icons into an associative array, since we're getting an object, but Core expects an array.
+    if ( isset( $_data->icons ) && ! is_array( $_data->icons ) ) {
+        $_data->icons = $this->convert_object_to_array( $_data->icons );
+    }
 
-		// Convert banners into an associative array, since we're getting an object, but Core expects an array.
-		if ( isset( $_data->banners ) && ! is_array( $_data->banners ) ) {
-			$_data->banners = $this->convert_object_to_array( $_data->banners );
-		}
+    // Convert contributors into an associative array, since we're getting an object, but Core expects an array.
+    if ( isset( $_data->contributors ) && ! is_array( $_data->contributors ) ) {
+        $_data->contributors = $this->convert_object_to_array( $_data->contributors );
+    }
 
-		// Convert icons into an associative array, since we're getting an object, but Core expects an array.
-		if ( isset( $_data->icons ) && ! is_array( $_data->icons ) ) {
-			$_data->icons = $this->convert_object_to_array( $_data->icons );
-		}
+    if ( ! isset( $_data->plugin ) ) {
+        $_data->plugin = $this->name;
+    }
+   if ( ! isset( $_data->name ) ) {
+        $_data->name = AFP_ITEM_NAME;
+    }
+	    if ( ! isset( $_data->plugin ) ) {
+        $_data->plugin = $this->name;
+    }
+    // Add the current version if it's not set
+    if ( ! isset( $_data->version ) ) {
+        $_data->version = $this->version;
+    }
 
-		// Convert contributors into an associative array, since we're getting an object, but Core expects an array.
-		if ( isset( $_data->contributors ) && ! is_array( $_data->contributors ) ) {
-			$_data->contributors = $this->convert_object_to_array( $_data->contributors );
-		}
-
-		if ( ! isset( $_data->plugin ) ) {
-			$_data->plugin = $this->name;
-		}
-
-		// Add the current version if it's not set
-		if ( ! isset( $_data->version ) ) {
-			$_data->version = $this->version;
-		}
-		return $_data;
-	}
+    return $_data;
+}
 
 	/**
 	 * 関数：convert_object_to_array
