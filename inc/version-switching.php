@@ -83,3 +83,25 @@ function translate_AFP_LITE_text( $translated_text, $text, $domain ) {
 	return $translated_text;
 }
 add_filter( 'gettext', 'translate_AFP_LITE_text', 20, 3 );
+
+/**
+ * 関数：suppress_plugin_install_errors
+ * 概要：プラグインインストール画面でのエラー表示を抑制
+ *
+ * 詳細：プラグインを追加する画面（/wp-admin/plugin-install.php）で
+ * 特定のエラー（E_NOTICE, E_WARNING）の表示を抑制します。
+ */
+
+// WordPressの管理画面が初期化される際に実行されるアクションフックを追加
+add_action( 'admin_init', 'suppress_plugin_install_errors' );
+
+function suppress_plugin_install_errors() {
+	// 現在のリクエストURLがプラグインインストール画面かどうかをチェック
+	if ( strpos( $_SERVER['REQUEST_URI'], '/wp-admin/plugin-install.php' ) !== false ) {
+		// プラグインインストール画面の場合、特定のエラー表示を抑制
+		// E_ALL: すべてのエラー
+		// ~E_NOTICE: 注意レベルのエラーを除外
+		// ~E_WARNING: 警告レベルのエラーを除外
+		error_reporting( E_ALL & ~E_NOTICE & ~E_WARNING );
+	}
+}
