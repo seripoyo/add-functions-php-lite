@@ -130,7 +130,7 @@ if ( isset( $options['fontawesome_v6'] ) && $options['fontawesome_v6'] === '1' )
 
 // WordPressで大きな画像をアップする時に強制縮小させないようにする
 if ( isset( $options['img_resize_cancel'] ) && $options['img_resize_cancel'] == '1' ) {
-	add_filter( 'big_image_size_threshold', array( $this->functions_extensions, '__return_false' ) );
+		add_filter( 'big_image_size_threshold', '__return_false' );
 }
 
 // SVGをアップロードできるようにする
