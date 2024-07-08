@@ -13,8 +13,10 @@ if ( ! defined( 'FUNCTIONS_MODULES_PATH' ) ) {
 
 require_once FUNCTIONS_MODULES_PATH . 'appearance.php';
 require_once FUNCTIONS_MODULES_PATH . 'extensions.php';
+require_once FUNCTIONS_MODULES_PATH . 'setting_htaccess.php';
 require_once FUNCTIONS_MODULES_PATH . 'ogp.php';
 require_once FUNCTIONS_MODULES_PATH . 'head.php';
+require_once FUNCTIONS_MODULES_PATH . 'security.php';
 require_once FUNCTIONS_MODULES_PATH . 'speed-up.php';
 
 if ( ! class_exists( 'Add_function_PHP\Functions\AFP_Functions' ) ) {
@@ -27,8 +29,9 @@ if ( ! class_exists( 'Add_function_PHP\Functions\AFP_Functions' ) ) {
 		private $functions_extensions;
 		private $functions_ogp;
 		private $functions_head;
+		private $functions_media;
+		private $functions_security;
 		private $functions_speed;
-		private $functions_widget;
 
 
 		/**
@@ -69,6 +72,7 @@ if ( ! class_exists( 'Add_function_PHP\Functions\AFP_Functions' ) ) {
 			$this->functions_extensions = new \Add_function_PHP\Functions\Functions_Extensions();
 			$this->functions_ogp        = new \Add_function_PHP\Functions\Functions_ogp(); // インスタンスを作成
 			$this->functions_head       = new \Add_function_PHP\Functions\Functions_head(); // インスタンスを作成
+			$this->functions_security   = new \Add_function_PHP\Functions\Functions_Security(); // インスタンスを作成
 			$this->functions_speed      = new \Add_function_PHP\Functions\Functions_Speed(); // インスタンスを作成
 
 			$options = get_option( 'add_functions_php_settings' );
@@ -257,6 +261,17 @@ if ( ! class_exists( 'Add_function_PHP\Functions\AFP_Functions' ) ) {
 			$new_input['body_start'] = isset( $input['body_start'] ) ? wp_kses( $input['body_start'], $allowed_html ) : '';
 			$new_input['body_after'] = isset( $input['body_after'] ) ? wp_kses( $input['body_after'], $allowed_html ) : '';
 
+			// アップロードをする実際の場所を指定するupload_path
+			if ( isset( $input['upload_path'] ) ) {
+				$new_input['upload_path'] = sanitize_text_field( $input['upload_path'] );
+			}
+			// アップした画像を表示させるURLを指定するupload_url_path
+			if ( isset( $input['upload_url_path'] ) ) {
+				$new_input['upload_url_path'] = sanitize_text_field( $input['upload_url_path'] );
+			}
+
+
+
 			// twitter_id
 			if ( isset( $input['twitter_id'] ) ) {
 				$new_input['twitter_id'] = sanitize_text_field( $input['twitter_id'] );
@@ -282,6 +297,10 @@ if ( ! class_exists( 'Add_function_PHP\Functions\AFP_Functions' ) ) {
 			} else {
 				$new_input['twitter_card_type'] = 'summary_large_image'; // デフォルト値
 			}
+
+			// デバッグ: サニタイズ後の値をログに記録
+			// error_log('Sanitized input: ' . print_r($new_input, true));
+
 
 			// 管理画面フォントのサニタイズ処理
 			// error_log('受け取った入力: ' . print_r($input, true));
