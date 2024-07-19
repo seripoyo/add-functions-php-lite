@@ -29,9 +29,6 @@ $options        = get_option( 'Add_functions_php_Settings' );
 	<li class="<?php echo ( isset( $options['current_tab'] ) && $options['current_tab'] === 'ogp_setting' ) ? 'active' : ''; ?>">
 		<a href="#ogp_setting"><?php _e( 'OGP Settings', 'add-functions-php' ); ?></a>
 	</li>
-	<li class="<?php echo ( isset( $options['current_tab'] ) && $options['current_tab'] === 'additional_code' ) ? 'active' : ''; ?>">
-		<a href="#additional_code"><?php _e( 'Adding a code', 'add-functions-php' ); ?></a>
-	</li>
 	<li class="<?php echo ( isset( $options['current_tab'] ) && $options['current_tab'] === 'widgets_dashboard' ) ? 'active' : ''; ?>">
 		<a href="#widgets_dashboard"><?php _e( 'Adding a dashboard widget', 'add-functions-php' ); ?></a>
 	</li>
